@@ -1,0 +1,25 @@
+@charset "UTF-8";
+
+header{
+	display:flex;
+	justify-content: space-around;
+}
+/* 로그인 email */
+.fa-envelope{
+	color : black;
+}
+/* 로그인 password */
+.fa-key{
+	color : black;
+}
+
+#stationNav{
+	display: flex;
+	align-content: center;
+	justify-content: space-around;
+}
+
+#map{
+	width: 90%;
+	height: 400px;
+}

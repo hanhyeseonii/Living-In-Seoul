@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  <mapper namespace="com.spring.myapp.WdrawMapper">
+  	<insert id="insert">
+  		insert into wdraw(wdrawdate,email,wdrawrs)
+		values(now(),#{email},#{wdrawrs})
+  	</insert>
+  	
+  	<select id="selectOne" resultType="Wdraw">
+	  	select *  from wdraw
+		where email = #{email}
+  	</select>
+  	
+  	<select id="selectList" resultType="Wdraw">
+  		select * from wdraw
+		where ${findkey} like '%' || #{findvalue} || '%'
+  	</select>
+  
+  </mapper>

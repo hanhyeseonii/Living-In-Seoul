@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.myapp.TourismMapper">
+	<select id="selectOne" resultType="Tourism">
+		SELECT  * FROM tourism
+		WHERE tnum = #{tnum}
+	</select>
+	<select id="selectList" resultType="Tourism">
+		SELECT * FROM tourism
+		<include refid="find"/>
+	</select>
+	
+	<!-- 전체게시물수 구하기 -->
+	<select id="selectTotalCnt" resultType="int">
+		SELECT COUNT(*) totalCnt FROM tourism
+	</select>
+	
+	<!-- 조회조건 sql문 -->
+	<sql id="find">
+		<if test="findkey =='tnum'">
+			where tnum LIKE '%' || #{findvalue} || '%'
+		</if>
+		<if test="findkey =='tname'">
+			where tname LIKE '%' || #{findvalue} || '%'
+		</if>
+		<if test="findkey =='taddress'">
+			where taddress LIKE '%' || #{findvalue} || '%'
+		</if>
+				
+	</sql>
+
+<!-- 	
+	조회수 + 1
+	<update id="updateReadCnt">
+		UPDATE board
+		SET readcnt = readcnt +1
+		WHERE bnum = #{bnum}
+	</update>
+	
+	좋아요 + 1
+	<update id="updateLikeCnt">
+		UPDATE board
+		SET likecnt = likecnt +1
+		WHERE bnum = #{bnum}
+	</update>
+	
+	싫어요 + 1
+	<update id="updateDisLikeCnt">
+		UPDATE board
+		SET dislikecnt = dislikecnt +1
+		WHERE bnum = #{bnum}
+	
+	</update>
+	 -->
+	
+	
+	
+	
+	
+</mapper>  

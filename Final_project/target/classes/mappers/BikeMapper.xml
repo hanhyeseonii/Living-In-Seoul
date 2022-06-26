@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.spring.myapp.BikeMapper">
+	
+	<insert id="insert" parameterType="java.util.List">
+		insert into realTimeStationInfo(stationId, stationName, rackTotCnt, parkingBikeTotCnt,
+			shared, stationLatitude, stationLongitude)
+ 		values
+ 		<foreach collection="list" item="item" separator=",">
+ 			(#{item.stationId}, #{item.stationName}, #{item.rackTotCnt}, #{item.parkingBikeTotCnt},
+ 			#{item.shared}, #{item.stationLatitude}, #{item.stationLongitude})
+ 		</foreach>
+	</insert>
+	
+	<update id="update" parameterType="java.util.List">
+		<foreach collection="list" item="item" open="" close="" separator=";">
+			update realTimeStationInfo
+			set stationName = #{item.stationName},
+				rackTotCnt = #{item.rackTotCnt},
+				parkingBikeTotCnt = #{item.parkingBikeTotCnt},
+				shared = #{item.shared},
+				stationLatitude = #{item.stationLatitude},
+				stationLongitude = #{item.stationLongitude}
+			where stationId = #{item.stationId} 
+		</foreach>
+	</update>
+	
+	<select id="selectList" resultType="RealTimeStationInfo">
+		select *, (6371*acos(cos(radians(#{stationLatitude}))*cos(radians(stationLatitude))*cos(radians(stationLongitude)
+			- radians(#{stationLongitude}))+sin(radians(#{stationLatitude}))*sin(radians(stationLatitude)))) as distance 
+		from realTimeStationInfo having distance &lt; 2
+		order by distance asc
+	</select>
+	
+	<select id="selectRealTimeStationInfo" resultType="RealTimeStationInfo">
+		select * from realTimeStationInfo
+		where stationId = #{stationId}
+	</select>
+	
+	<select id="selectBikeStation" resultType="BikeStation">
+		select * from bikeStation
+		where stationId = #{stationId}
+	</select>
+	
+	<select id="autocomplete" resultType="BikeStation">
+		select * from bikeStation
+		where roadaddress like concat('%', #{value},'%')
+			or detailaddress like concat('%', #{value},'%')
+		limit 5
+	</select>
+	
+</mapper>

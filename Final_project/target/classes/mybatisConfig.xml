@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+  PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-config.dtd">
+ <configuration>
+ 	<settings>
+ 		<!-- 널허용:매퍼에서 게터를 이용해서 값을 가져올때 null가능 -->
+ 		<setting name="jdbcTypeForNull" value="NULL"/>
+ 	</settings>
+	<typeAliases>
+		<typeAlias type="com.spring.myapp.dto.Member" alias="Member"/>
+		<typeAlias type="com.spring.myapp.dto.Wdraw" alias="Wdraw"/>
+		<typeAlias type="com.spring.myapp.dto.RealTimeStationInfo" alias="RealTimeStationInfo"/>
+		<typeAlias type="com.spring.myapp.dto.BikeStation" alias="BikeStation"/>
+		<typeAlias type="com.spring.myapp.dto.Board" alias="Board"/>
+		<typeAlias type="com.spring.myapp.dto.Reply" alias="Reply"/>
+		<typeAlias type="com.spring.myapp.dto.BoardFile" alias="BoardFile"/>
+		<typeAlias type="com.spring.myapp.dto.Tourism" alias="Tourism"/>
+	</typeAliases>
+</configuration>  
+

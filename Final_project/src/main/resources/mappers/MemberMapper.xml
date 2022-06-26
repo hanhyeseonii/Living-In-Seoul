@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.myapp.MemberMapper">
+	<insert id="insert">
+		insert into member(email,name,passwd,birthdate,address,regidate,modidate)
+		values(#{email},#{name},#{passwd},#{birthdate},#{address},now(),now())
+	</insert>
+	
+	<update id="update">
+		update member
+		set 
+		name=#{name},
+		passwd =#{passwd},
+		birthdate =#{birthdate},
+		address=#{address},
+		modidate=now()
+		where email = #{email}
+	</update>
+	
+	<delete id="delete">
+		delete from member
+		where email = #{email}
+	</delete>	
+	
+	<select id="selectOne" resultType="Member">
+		select *  from member
+		where email = #{email}
+	</select>
+	
+	<select id="id_selectOne" resultType="Member">
+		select*from member
+		where name =#{name}
+		and birthdate =#{birthdate}
+	</select>
+	
+	<select id="pw_selectOne" resultType="Member">
+		select*from member
+		where email =#{email}
+		and name =#{name}
+		and birthdate =#{birthdate}
+	</select>
+	
+	<select id="selectList" resultType="Member">
+		select * from member
+		where ${findkey} like '%' || #{findvalue} || '%'
+	</select>
+	
+	
+	<!-- 네이버 간편가입 -->
+	<insert id="insert_simplejoin">
+		insert into member(email,name,simplejoin)
+		values(#{email},#{name},#{simplejoin})
+	</insert>
+	
+</mapper>  

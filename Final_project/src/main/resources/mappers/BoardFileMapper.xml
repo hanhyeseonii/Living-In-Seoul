@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+  
+<mapper namespace="com.spring.myapp.BoardFileMapper">
+	<insert id="insert">
+		INSERT INTO boardfile(bfnum, bnum, filename)
+		VALUES(#{bfnum}, #{bnum}, #{filename})
+	</insert>
+	<update id="update">
+		UPDATE boardfile
+		SET filename = #{filename}
+		WHERE bfnum = #{bfnum}
+	</update>
+	<delete id="delete">
+		DELETE FROM boardfile
+		WHERE bfnum = #{bfnum}
+	</delete>
+	<select id="selectOne" resultType="BoardFile">
+		SELECT * FROM boardfile
+		WHERE bfnum = #{bfnum}
+	</select>
+	<select id="selectList" resultType="BoardFile">
+		SELECT * FROM boardfile
+		WHERE bnum = #{bnum}
+	</select>
+</mapper>  
