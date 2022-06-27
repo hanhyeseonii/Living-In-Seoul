@@ -12,6 +12,7 @@
 		<property name="location" value="classpath:/application.properties"/>
 		<property name="fileEncoding" value="utf-8"/>
 	</bean>
+	
 	<!-- 데이터 소스 -->
 	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
 		<property name="driverClassName" value="${database.driver}"/>

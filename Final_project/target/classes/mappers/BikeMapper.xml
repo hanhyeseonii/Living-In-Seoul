@@ -48,7 +48,7 @@
 		select * from bikeStation
 		where roadaddress like concat('%', #{value},'%')
 			or detailaddress like concat('%', #{value},'%')
-		limit 5
+		limit 10
 	</select>
 	
 </mapper>

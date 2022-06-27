@@ -12,10 +12,11 @@
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.1/jquery-ui.js"></script>
     <script type="text/javascript" src="http://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7v323bqzdx"></script>
-    <script type="text/javascript" src="${path}/resources/js/bikeList.js"></script>
+    <script type="text/javascript" src="${path}/resources/js/traffic/bikeList.js"></script>
 </head>
 
 <body>
+	<%@ include file="../header.jsp" %>
 	<!-- 비동기 방식 call back 함수 지정하기 -->
 	<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7v323bqzdx&callback=initMap"></script>
 	<h2>따릉이 대여소</h2>

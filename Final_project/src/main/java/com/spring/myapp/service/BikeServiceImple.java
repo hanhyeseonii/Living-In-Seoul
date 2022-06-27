@@ -100,13 +100,9 @@ public class BikeServiceImple implements BikeService{
 				stationInfo.setShared((String)object.get("shared"));
 				stationInfo.setStationLatitude((String)object.get("stationLatitude"));
 				stationInfo.setStationLongitude((String)object.get("stationLongitude"));
-				if(i>1) {
-					if(bikeRepository.selectBikeStation(stationInfo.getStationId())!=null) // BikeStation테이블에 있는 데이터만 넣기
-						if(bikeRepository.selectRealTimeStationInfo(stationInfo.getStationId())==null) // 중복된 데이터 빼기
-							blist.add(stationInfo);	
-				}else {
-					blist.add(stationInfo);
-				}
+				if(bikeRepository.selectBikeStation(stationInfo.getStationId())!=null) // BikeStation테이블에 있는 데이터만 넣기
+					if(bikeRepository.selectRealTimeStationInfo(stationInfo.getStationId())==null) // 중복된 데이터 빼기
+						blist.add(stationInfo);	
 			}
 			if(blist.size()!=0) bikeRepository.update(blist);
 		}

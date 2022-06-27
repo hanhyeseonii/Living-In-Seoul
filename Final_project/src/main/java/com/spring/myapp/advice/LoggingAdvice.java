@@ -25,7 +25,7 @@ public class LoggingAdvice {
 	
 	//리턴값 출력
 	//Object obj : 리턴 오브젝트
-	@AfterReturning(pointcut="execution(* com.spring.myapp.repository.*.*(..))", returning = "obj")
+	@AfterReturning(pointcut="execution(* com.spring.myapp.controller.*.*(..))", returning = "obj")
 	public void afterLog(JoinPoint jp, Object obj) {
 		if (obj != null) {
 			System.out.println("--------------------------------------------");
