@@ -178,11 +178,6 @@ public class MemberController {
 	
 	//환경버튼을 눌렀을 때
 	
-	@GetMapping("/weather")
-	public void weather() {
-		
-	}
-	
 	//안전버튼을 눌렀을 때
 	
 	//교통버튼을 눌렀을 때

@@ -1,6 +1,6 @@
 function weather(region){
 	$.ajax({
-		url : `/weather/weatherDetail`,
+		url : `/myapp/weather/weatherDetail`,
 		method : 'POST',
 		data : {"id" : region},
 		success : function(data){
@@ -22,19 +22,19 @@ function weather(region){
 				switch(rainState) {
 					case "1":
 						$('.weather-state-text').html("비");
-						$('#RN1').html("시간당강수량 : "+ rain +"mm");
+						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 					case "2":
 						$('.weather-state-text').html("비/눈");
-						$('#RN1').html("시간당강수량 : "+ rain +"mm");
+						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 					case "3":
 						$('.weather-state-text').html("눈");
-						$('#RN1').html("시간당강수량 : "+ rain +"mm");
+						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 					case "4":
 						$('.weather-state-text').html("소나기");
-						$('#RN1').html("시간당강수량 : "+ rain +"mm");
+						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 				}
 			}else {

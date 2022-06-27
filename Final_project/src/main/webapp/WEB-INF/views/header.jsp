@@ -23,7 +23,7 @@
 			<a href="${path}/member/">HOME</a>
 			<a href="${path}/culture/board/">맛집</a>
 			<a href="${path}/culture/tourism/">관광지</a>	
-			<a href="${path}/member/weather/">날씨</a>
+			<a href="${path}/weather/weather/">날씨</a>
 			<a href="${path}/accident/">안전</a>
 			<a href="${path}/traffic/bikeList/">교통</a>
 		</div>

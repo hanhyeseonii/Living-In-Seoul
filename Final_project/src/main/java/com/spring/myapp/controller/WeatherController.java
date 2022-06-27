@@ -22,8 +22,12 @@ public class WeatherController {
 	@Autowired
 	WeatherService ws;
 	
+	@GetMapping("weather")
+	public void weather() {
+	}
+	
 	@ResponseBody
-	@GetMapping("weatherDetail")
+	@PostMapping("weatherDetail")
 	public List<Map<String, String>> weather(@RequestParam(value="id", required=false) String region) {
 		Map<String, String> xy = new HashMap<>();
 		if (region==null){
