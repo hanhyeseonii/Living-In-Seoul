@@ -24,7 +24,8 @@ public enum ErrorCode {
 	ERROR_ALREADY_EMAIL(1,"이미 사용되고있는 이메일입니다."),
 	//비밀번호 찾기
 	SUCCESS_MATCH_PWINFO(0,"비밀번호 변경으로 이동합니다."),
-	ERROR_NONMATCH_PWINFO(1,"일치하는 회원이 없습니다.");
+	ERROR_NONMATCH_PWINFO(1,"일치하는 회원이 없습니다."),
+	SUCCESS_PWMODIFY(0,"비밀번호 수정이 완료되었습니다.");
 
 	
 	private int code;

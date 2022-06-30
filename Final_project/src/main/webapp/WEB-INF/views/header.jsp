@@ -12,14 +12,14 @@
 	<h2>LIVING IN SEOUL</h2>
 	<div>
 		<input type="hidden" value="${path}" id="contextpath">
-		<span id="sessionEmail"><a href="${path}/member/my_info">${sessionScope.email}</a></span>
+		<span id="sessionEmail"><a href="${path}/member/info">${sessionScope.email}</a></span>
 		<a href="${path}/member/login" id="aLogin">LOGIN</a>
 		<a href="" onclick="logoutCheck(event, '${path}')" id="aLogout">LOGOUT</a>
 		<a href="${path}/member/sign_up" id="asign_up" >SIGN UP</a>
 	</div>
 	</header>
 	<nav>
-		<div>
+		<div align="right">
 			<a href="${path}/member/">HOME</a>
 			<a href="${path}/culture/board/">맛집</a>
 			<a href="${path}/culture/tourism/">관광지</a>	

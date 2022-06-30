@@ -26,6 +26,8 @@ public interface MemberService {
 	String id_selectOne(Member member);
 	//비밀번호 찾기
 	ErrorCode pw_selectOne(Member member);
+	//비밀번호 수정
+	ErrorCode passwd_update(Member member);
 	//내정보 수정
 	ErrorCode update(Member member);
 

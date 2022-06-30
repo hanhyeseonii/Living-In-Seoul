@@ -1,24 +1,3 @@
-/*중복확인*/
-function duplCheck(e){
-	e.preventDefault();
-	const email = document.getElementById('email').value;
-	console.log(email);
-	if(!email){
-		alert('이메일을 등록해주세요.');
-		document.getElementById('email').focus();
-		return;
-	}
-	
-	/*ajax 비동기 방식*/
-	fetch(`${path}/member/duplCheck/${email}`)
-	.then(res=>res.json())
-	.then(data=>{
-		console.log(data.code);
-		console.log(data.msg);
-		alert(data.msg);
-	})
-	.catch(console.error);
-	
 /*save버튼을 클릭했을 때*/
 function modifyCheck(e){
 	e.preventDefault();
@@ -48,6 +27,4 @@ function modifyCheck(e){
 		return;
 	}
 	document.getElementById('frmInfomodi').submit();
-}
-	
 }

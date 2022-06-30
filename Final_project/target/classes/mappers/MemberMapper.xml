@@ -13,9 +13,16 @@
 		update member
 		set 
 		name=#{name},
-		passwd =#{passwd},
 		birthdate =#{birthdate},
 		address=#{address},
+		modidate=now()
+		where email = #{email}
+	</update>
+	
+	<update id="passwd_update">
+		update member
+		set 
+		passwd =#{passwd},
 		modidate=now()
 		where email = #{email}
 	</update>

@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/sign_up.js"></script>
+<script type="text/javascript" src="${path}/resources/js/member/sign_up.js"></script>
 </head>
 <body>
 	<%@ include file="../header.jsp"%>

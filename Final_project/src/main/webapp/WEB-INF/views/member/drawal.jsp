@@ -14,7 +14,7 @@
 		<table>
 			<tr>
 				<th>email</th>
-				<td>${member.email}</td>
+				<td>${email}</td>
 			</tr>
 			<tr>
 				<th>withdrawal reason</th>

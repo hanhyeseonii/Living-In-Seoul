@@ -15,5 +15,6 @@ public interface MemberRepository {
 	int insert_simplejoin(Member member);
 	Member id_selectOne(Member member);
 	Member pw_selectOne(Member member);
+	int passwd_update(Member member);
 	
 }

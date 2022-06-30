@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/login.js"></script>
+<script type="text/javascript" src="${path}/resources/js/member/login.js"></script>
 </head>
 <body>
 	<h2 align="center">LIVING IN SEOUL</h2>

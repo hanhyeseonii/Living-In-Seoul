@@ -173,25 +173,10 @@ public class MemberController {
 		}
 		 
 	}
-	
-	//문화버튼을 눌렀을 때
-	
-	//환경버튼을 눌렀을 때
-	
-	//안전버튼을 눌렀을 때
-	
-	//교통버튼을 눌렀을 때
-	
 		
-
-	//내정보 폼으로 이동
-	@GetMapping("info")
-	public void info() {
-	}
-	
 	//이메일을 눌렀을 때
-	@GetMapping("my_info")
-	public String my_info(HttpSession session, Model model) {
+	@GetMapping("info")
+	public String info(HttpSession session, Model model) {
 		String email = (String) session.getAttribute("email");
 		//한건 조회
 		Member member = memberService.selectOne(email);
@@ -204,7 +189,13 @@ public class MemberController {
 	
 	//MODIFY 버튼을 눌렀을 때(MY INFORMATION MODIFY로 이동)
 	@GetMapping("info_modify")
-	public void info_modify() {
+	public void info_modify(HttpSession session, Model model) {
+		String email = (String) session.getAttribute("email");
+		//한건 조회
+		Member member = memberService.selectOne(email);
+		
+		//forward방식 : member + info.jsp => response
+		model.addAttribute("member", member);
 	}
 	
 	//MY INFORMATION MODIFY에서 SAVE 버튼을 눌렀을 때(MY INFORMATION으로 이동)
@@ -241,17 +232,23 @@ public class MemberController {
 	
 	//비밀번호 변경에서 SAVE버튼을 눌렀을 때(MY INFORMATION으로 이동)
 	@PostMapping("passwd_modify")
-	public String passwd_modify(@ModelAttribute Member member, Model model,RedirectAttributes rattr, HttpSession session) {
+	public String passwd_modify(@ModelAttribute Member member,
+			Model model,RedirectAttributes rattr, HttpSession session) {
 		logger.info(member.toString());
-		ErrorCode errorCode = memberService.insert(member, session);
+		member.setEmail((String)session.getAttribute("email"));
+		ErrorCode errorCode = memberService.passwd_update(member);
 		rattr.addFlashAttribute("msg",errorCode.getMsg());
 		
-		return "member/info";
+		return "redirect:/member/info";
 	}
 	
 	//회원탈퇴 버튼을 눌렀을 때(MEMBERSHIP WITTHDRAWAL로 이동)
 	@GetMapping("drawal")
-	public void drawal(){
+	public void drawal(HttpSession session, Model model){
+		String email = (String) session.getAttribute("email");
+		
+		//forward방식 : member + info.jsp => response
+		model.addAttribute("email", email);
 	}
 	
 	

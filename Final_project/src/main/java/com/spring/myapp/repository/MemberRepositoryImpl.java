@@ -63,4 +63,10 @@ public class MemberRepositoryImpl implements MemberRepository {
 		return sqlSession.selectOne("com.spring.myapp.MemberMapper.pw_selectOne", member);
 	}
 
+	@Override
+	public int passwd_update(Member member) {
+		// TODO Auto-generated method stub
+		return sqlSession.update("com.spring.myapp.MemberMapper.passwd_update", member);
+	}
+
 }

@@ -6,17 +6,16 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/info_modify.js"></script>
+<script type="text/javascript" src="${path}/resources/js/member/info_modify.js"></script>
 </head>
 <body>
 	<%@ include file="../header.jsp"%>
 	<h5>MY INFORMATION MODIFY</h5>
-	<form id="frmInfomodi" action="${path}/member/info">
+	<form id="frmInfomodi" action="${path}/member/info_modify" method="post">
 		<table>
 			<tr>
 				<th>email</th>
-				<td><input type="email" name="email" id="email" value="${member.email}"></td>
-				<td><button type="button" onclick="duplCheck(event,'${path}')">중복확인</button></td>
+				<td><input type="email" name="email" id="email" value="${member.email}" readonly></td>
 			</tr>
 			<tr>
 				<th>name</th>

@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.spring.myapp.advice.ErrorCode;
 import com.spring.myapp.controller.MemberController;
@@ -86,7 +87,7 @@ public class MemberServiceImpl implements MemberService {
 	@Transactional
 	@Override
 	public ErrorCode wdrawinsert(Wdraw wdraw) {
-
+		
 		//1)탈퇴사유를 입력하지 않았다면
 		if(wdraw.getWdrawrs().equals("")) {
 			return ErrorCode.ERROR_NONINSERT_WDRS;
@@ -145,12 +146,26 @@ public class MemberServiceImpl implements MemberService {
 		}
 		return ErrorCode.ERROR_NONMATCH_PWINFO; 
 	}
+	
+	//비밀번호 변경**
+	@Override
+	public ErrorCode passwd_update(Member member){
+		// 회원정보 수정
+		//2)새로운 비밀번호 암호화
+		String cryptPasswd = null; 
+		if (!member.getPasswd().equals("")) 
+			cryptPasswd =  bCryptPasswordEncoder.encode(member.getPasswd());
+
+		member.setPasswd(cryptPasswd);
+
+		//4)저장
+		memberRepository.passwd_update(member);
+		return ErrorCode.SUCCESS_PWMODIFY;
+	}
 
 	//내정보 수정**
 	@Override
 	public ErrorCode update(Member member) {
-		//한건조회
-		Member dbmember = memberRepository.selectOne(member.getEmail());
 		//저장
 		memberRepository.update(member);
 		return ErrorCode.SUCCESS_INFOMODIFY;
