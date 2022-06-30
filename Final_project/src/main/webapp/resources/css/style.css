@@ -1,9 +1,40 @@
 @charset "UTF-8";
 
 header{
-	display:flex;
+	display: flex;
+	align-content: right;
 	justify-content: space-around;
 }
+
+nav{
+	align-content: right;
+	justify-content: space-around;
+	margin-right: 150px;
+}
+
+.mainImage{
+	position: relative;
+}
+
+.mainImage:hover{
+	opacity : 0.7;
+}
+
+
+.mainImage:hover .text{
+	visibility:visible;
+}
+
+.title{
+	position : absolute;
+	font-size:80px;
+	color: white;
+}
+#title{
+	top : 115;
+	left : 490;
+}
+
 /* 로그인 email */
 .fa-envelope{
 	color : black;
@@ -25,8 +56,28 @@ header{
 }
 
 
+#full-width{
+	max-width : 2000px;
+}
 
+.bx-wrapper{
+	margin: 0 auto;
+}
+.menu{
+	display:flex;
+	justify-content: center;
+}
 
+.menuCard{
+	margin-left : 50px;
+	margin-right : 50px;
+	margin-bottom: 50px;
+}
+
+.weatherCovid{
+	display: flex;
+	justify-content: center;
+}
 /* weather */
 .weather_box{
 	position:relative;

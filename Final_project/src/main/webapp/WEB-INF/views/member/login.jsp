@@ -9,6 +9,7 @@
 <script type="text/javascript" src="${path}/resources/js/member/login.js"></script>
 </head>
 <body>
+	<br><br><br><br><br><br><br><br>
 	<h2 align="center">LIVING IN SEOUL</h2>
 	<form id="frmLogin" action="${path}/member/login" method="post">
 		<table align="center">

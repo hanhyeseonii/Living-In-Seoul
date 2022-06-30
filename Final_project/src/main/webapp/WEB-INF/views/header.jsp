@@ -9,7 +9,7 @@
 </head>
 <body>
 	<header>
-	<h2>LIVING IN SEOUL</h2>
+	<h3>𝙇𝙞𝙫𝙞𝙣𝙜 𝙄𝙣 𝙎𝙚𝙤𝙪𝙡</h3>
 	<div>
 		<input type="hidden" value="${path}" id="contextpath">
 		<span id="sessionEmail"><a href="${path}/member/info">${sessionScope.email}</a></span>
