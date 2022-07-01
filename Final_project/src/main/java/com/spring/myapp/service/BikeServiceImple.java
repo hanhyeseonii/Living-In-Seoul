@@ -18,6 +18,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.myapp.dto.BikeStation;
 import com.spring.myapp.dto.RealTimeStationInfo;
@@ -39,7 +40,8 @@ public class BikeServiceImple implements BikeService{
 	}
 	
 	//api조회후 대여소 정보 DB update(스케쥴러이용 30분마다 업데이트)
-//	@Scheduled(cron = "0 0/30 * * * ?")
+	//@Scheduled(cron = "0 0/30 * * * ?")
+	@Transactional
 	public void updateStationInfo() throws IOException, ParseException {
 		//데이터 약2900개 한번에 호출할 수 있는 데이터 1000개 이므로 반복문 사용
 		//총 데이터는 약5800개 2800개 이상부터는 전부 중복데이터
@@ -58,10 +60,10 @@ public class BikeServiceImple implements BikeService{
 			
 			//현재 날짜와 시간을 입력
 			LocalDateTime now = LocalDateTime.now();
-			String formatedNow = now.format(DateTimeFormatter.ofPattern("yyyyMMddHH"));
+			String NowDate = now.format(DateTimeFormatter.ofPattern("yyyyMMddHH"));
 			
 			// 서비스별 추가 요청 인자이며 자세한 내용은 각 서비스별 '요청인자'부분에 자세히 나와 있습니다.
-			urlBuilder.append("/" + URLEncoder.encode(formatedNow,"UTF-8")); //서비스별 추가 요청인자들
+			urlBuilder.append("/" + URLEncoder.encode(NowDate,"UTF-8")); //서비스별 추가 요청인자들
 			
 			URL url = new URL(urlBuilder.toString());
 			HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -101,7 +103,7 @@ public class BikeServiceImple implements BikeService{
 				stationInfo.setStationLatitude((String)object.get("stationLatitude"));
 				stationInfo.setStationLongitude((String)object.get("stationLongitude"));
 				if(bikeRepository.selectBikeStation(stationInfo.getStationId())!=null) // BikeStation테이블에 있는 데이터만 넣기
-					if(bikeRepository.selectRealTimeStationInfo(stationInfo.getStationId())==null) // 중복된 데이터 빼기
+//					if(bikeRepository.selectRealTimeStationInfo(stationInfo.getStationId())==null) // 중복된 데이터 빼기(insert에만 사용)
 						blist.add(stationInfo);	
 			}
 			if(blist.size()!=0) bikeRepository.update(blist);
@@ -113,7 +115,5 @@ public class BikeServiceImple implements BikeService{
 	public List<BikeStation> autocomplete(String value){
 		return bikeRepository.autocomplete(value);
 	}
-	
-	
 }
 
