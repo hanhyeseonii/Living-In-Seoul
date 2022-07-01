@@ -25,7 +25,7 @@
 		<c:forEach var="board" items="${blist}">
 			<tr>
 				<td>${board.bnum}</td>
-				<td><a href="${path}/board/detail?bnum=${board.bnum}">${board.subject}</a> </td>
+				<td><a href="${path}/culture/board/detail?bnum=${board.bnum}">${board.subject}</a> </td>
 				<td>${board.email}</td>
 				<td>${board.readcnt}</td>
 				<td>${board.likecnt}</td>
@@ -36,23 +36,23 @@
 	</table>
 	
 	
-	<a href="${path}/board/add">글쓰기</a>
+	<a href="${path}/culture/board/add">글쓰기</a>
 	<hr>
 	<c:if test="${page.startPage != 1}">
-		<a href="${path}/board/list?curPage=${page.startPage-1}">이전</a>
+		<a href="${path}/culture/board/list?curPage=${page.startPage-1}">이전</a>
 	</c:if>
 	
 	<c:forEach var="i" begin="${page.startPage}" end="${page.endPage}">
-		<a href="${path}/board/list?curPage=${i}">${i}</a> 
+		<a href="${path}/culture/board/list?curPage=${i}">${i}</a> 
 	</c:forEach>
 
 	<c:if test="${page.endPage<page.totPage}">
-		<a href="${path}/board/list?curPage=${page.endPage+1}">다음</a>
+		<a href="${path}/culture/board/list?curPage=${page.endPage+1}">다음</a>
 	</c:if>
 	
 	
 	
-	<form action="${path}/board/list">
+	<form action="${path}/culture/board/list">
 		<select name="findkey">
 			<option value="bnum" <c:out value="${page.findkey=='bnum'?'selected':''}"/>>번호</option>
 			<option value="subject" <c:out value="${page.findkey=='subject'?'selected':''}"/>>제목</option>

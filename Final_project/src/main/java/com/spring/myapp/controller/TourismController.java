@@ -26,7 +26,7 @@ import com.spring.myapp.dto.Page;
 import com.spring.myapp.service.TourismService;
 
 @Controller
-@RequestMapping("tourism")
+@RequestMapping("culture/tourism")
 //@SessionAttributes("page") //1)세션에 담을 변수명
 public class TourismController {
 	@Autowired

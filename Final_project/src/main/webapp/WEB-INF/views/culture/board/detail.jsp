@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/fileImage.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/fileImage.js"></script>
 <!-- 핸들마 탬플릿 cdn연결 -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script type="text/javascript" src="${path}/resources/js/boardDetail.js"></script>
-<script type="text/javascript" src="${path}/resources/js/boardReply.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/boardDetail.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/boardReply.js"></script>
 <!-- 댓글리스트 탬플릿 소스 -->
 <script type="text/x-handlebars-template" id="template_source">
 	{{#each .}}
@@ -87,10 +87,10 @@
 		</tr>
 		<tr>
 			<td colspan="2">
-				<button onclick="location.href='${path}/board/modify?bnum=${board.bnum}'">수정</button>
+				<button onclick="location.href='${path}/culture/board/modify?bnum=${board.bnum}'">수정</button>
 				<button id="replyAddShow">댓글</button>
 				<button onclick="removeCheck('${path}', ${board.bnum})">삭제</button>
-				<button onclick="location.href='${path}/board/list'">리스트</button>
+				<button onclick="location.href='${path}/culture/board/list'">리스트</button>
 			</td>
 		</tr>
 	</table>

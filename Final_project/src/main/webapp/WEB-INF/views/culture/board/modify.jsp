@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/fileAdd.js"></script>
 </head>
 <body>
 <div class="container">
@@ -17,7 +17,7 @@
 	<h2>수정</h2>
 <%-- 	${board}
 	${bflist} --%>
-	<form action="${path}/board/modify" method="post" enctype="multipart/form-data">
+	<form action="${path}/culture/board/modify" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>번호</th>

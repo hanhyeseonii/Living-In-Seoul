@@ -6,7 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/fileAdd.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/fileAdd.js"></script>
 </head>
 <body>
 <div class="container">
@@ -15,7 +15,7 @@
 	<h5>맛집 - 공유할 맛집 정보 글을 올려주세요</h5>
 	
 	<h2>맛집 글쓰기</h2>
-	<form action="${path}/board/add" method="post" enctype="multipart/form-data">
+	<form action="${path}/culture/board/add" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
 				<th>이메일</th>

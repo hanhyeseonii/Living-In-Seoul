@@ -28,7 +28,7 @@ import com.spring.myapp.service.BoardFileService;
 import com.spring.myapp.service.BoardService;
 
 @Controller
-@RequestMapping("board")
+@RequestMapping("culture/board")
 //@SessionAttributes("page") //1)세션에 담을 변수명
 public class BoardController {
 	@Autowired
@@ -41,7 +41,7 @@ public class BoardController {
 		//세션에 객체를 할당하기 위한 목적(@SessionAttributes이 존재시 session생성)
 		model.addAttribute("page", page); //3)세션에 할당
 		// WEB-INF/views/board/list.jsp로 이동
-		return "/board/list";
+		return "culture/board/list";
 	}
 	
 	//@ModelAttribute("page") : @SessionAttributes가 있을때는 세션에도 저장
@@ -85,7 +85,7 @@ public class BoardController {
 		//리스트 이동
 		rattr.addFlashAttribute("msg", errorCode.getMsg());
 		
-		return "redirect:/board/list";
+		return "redirect:list";
 		
 	}
 	
@@ -133,7 +133,7 @@ public class BoardController {
 	@GetMapping("sessionClear")
 	public String sessionClear(SessionStatus sessionStatus) {
 		sessionStatus.setComplete(); //세션에서 지우기
-		return "/board/list";
+		return "culture/board/list";
 	}
 	
 	//좋아요+1

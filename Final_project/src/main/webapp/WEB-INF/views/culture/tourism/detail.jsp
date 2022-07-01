@@ -6,11 +6,11 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<script type="text/javascript" src="${path}/resources/js/fileImage.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/fileImage.js"></script>
 <!-- 핸들마 탬플릿 cdn연결 -->
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script type="text/javascript" src="${path}/resources/js/boardDetail.js"></script>
-<script type="text/javascript" src="${path}/resources/js/tourismReply.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/boardDetail.js"></script>
+<script type="text/javascript" src="${path}/resources/js/culture/tourismReply.js"></script>
 <!-- 댓글리스트 탬플릿 소스 -->
 <script type="text/x-handlebars-template" id="template_source">
 	{{#each .}}
@@ -94,7 +94,7 @@
 		<tr>
 			<td colspan="2">
 				<button id="replyAddShow">댓글</button>
-				<button onclick="location.href='${path}/tourism/list'">리스트</button>
+				<button onclick="location.href='${path}/culture/tourism/list'">리스트</button>
 			</td>
 		</tr>
 	</table>
