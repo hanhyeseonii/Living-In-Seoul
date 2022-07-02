@@ -2,16 +2,16 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-  <mapper namespace="com.spring.myapp.AccidentMapper">
+ <mapper namespace="com.spring.myapp.AccidentMapper">
 	<insert id="insert">
 		insert into accident(accId,accInfo,regidate)
 		values(#{accId},#{accInfo},now())
 	</insert>
 	
 	  <delete id="delete">
-  		delete from accident 
-  		<![CDATA[where regidate < DATE_ADD(NOW(), INTERVAL -3 HOUR)]]>
-  	</delete>
+	 		delete from accident 
+	 		<![CDATA[where regidate < DATE_ADD(NOW(), INTERVAL -3 HOUR)]]>
+	 	</delete>
 	
 	<select id="selectOne" resultType="Accident">
 		select * from accident
@@ -22,5 +22,4 @@
 		select * from accident
 		order by accId desc
 	</select>
-
-  </mapper>
+ </mapper>

@@ -31,8 +31,8 @@ public class AccidentRepositoryImpl implements AccidentRepository {
 	}
 
 	@Override
-	public List<Accident> selectList() {
-		return sqlSession.selectOne("com.spring.myapp.AccidentMapper.selectList");
+	public List<Accident> selectList() {		
+		return sqlSession.selectList("com.spring.myapp.AccidentMapper.selectList");
 	}
 
 }

@@ -13,7 +13,9 @@
 </head>
 <body>
 <%@include file="../header.jsp"%>
-	<table border="1">
+	<h2 style="text-align: center;">자치구별 날씨</h2>
+	<br>
+	<table border="1" style="margin-left:auto; margin-right:auto;">
 		<tr>
 			<th></th>
 			<th>날씨 정보</th>

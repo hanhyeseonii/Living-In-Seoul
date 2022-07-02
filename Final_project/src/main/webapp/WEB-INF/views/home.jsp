@@ -7,6 +7,8 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript" src="${path}/resources/js/accident/covid.js"></script>
+<script type="text/javascript" src="${path}/resources/js/accident/accidentHome.js"></script>
+<script type="text/javascript" src="${path}/resources/js/weather/weatherHome.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <script type="text/javascript">
 $(function(){
@@ -32,18 +34,10 @@ $(function(){
 		</div>
 		<hr>
 		<div class="weatherCovid">
-			<div>[날씨] 서울시 맑음 27'C</div>
-			<div style="display: flex;">
-				&nbsp;&nbsp;│[코로나] 확진자 수 &nbsp;
-				<div class="covid-cnt"></div>
-			</div>
-			<div style="display: flex;">
-				&nbsp;&nbsp;사망자 수 &nbsp;
-				<div class="death-cnt"></div>
-			</div>
-			<div>
-				&nbsp;&nbsp;&nbsp;&nbsp;│[사고] 서부간선도로 4중추돌 교통사고
-			</div>		
+			[날씨] 서울시&nbsp;<div class="weather-text"></div>
+				&nbsp;│[코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
+				&nbsp;사망자 수&nbsp;<div class="death-cnt"></div>
+				&nbsp;│[사고]&nbsp;<div class="accident-text"></div>
 		</div>
 		<hr>
 		<div class="menu">

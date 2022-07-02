@@ -1,6 +1,7 @@
 package com.spring.myapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -15,21 +16,24 @@ import com.spring.myapp.service.AccidentService;
 public class AccidentController {
 	@Autowired
 	AccidentService as;
-	
-	@GetMapping("list")
-	public void list() {
-	
-	}
+
 	
 	@GetMapping("search")
 	public String search(Model model) {
 		model.addAttribute("accidentList",as.selectList());
-		return "accident/list";
+		return "accident/accident";
 	}
 	
 	@ResponseBody
-	@GetMapping("wizet")
-	public Accident wizet() {
-		return as.selectOne();
+	@GetMapping(value="wizet", produces = "application/text; charset=utf8")
+	public String wizet() {
+		return as.selectOne().getAccInfo();
 	}
+	
+	@Scheduled(cron="0 */5 * * * *")
+	public void apiUpdate() {
+		as.insert();
+	}
+	
+
 }
