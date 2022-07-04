@@ -58,7 +58,8 @@ function weather(region){
 	}) //ajax 종료
 }
 
-window.addEventListener('load',()=>{	
+window.addEventListener('load',()=>{
+	weather("서울시")
 	document.getElementById("jonglo").addEventListener('click',()=>{
 		weather("종로구");
 	})

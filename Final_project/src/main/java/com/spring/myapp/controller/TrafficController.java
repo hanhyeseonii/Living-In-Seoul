@@ -6,6 +6,7 @@ import java.util.List;
 import org.json.simple.parser.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,7 +23,8 @@ import com.spring.myapp.service.BikeService;
 public class TrafficController {
 	@Autowired
 	BikeService bikeService;
-
+	
+	//대여소 조회 페이지 이동
 	@GetMapping("bikeList")
 	public void bikeList() {
 	}
@@ -38,5 +40,16 @@ public class TrafficController {
 	public List<BikeStation> autocomplete(@RequestParam String value) throws IOException, ParseException {
 		return bikeService.autocomplete(value);
 	}
+	
+	//따릉이 이용방법 페이지 이동
+	@GetMapping("bikeManual")
+	public void bikeManual() {
+	}
+	
+	//도로교통상황 페이지 이동
+	@GetMapping("traffic")
+	public void traffic() {
+	}
+	
 	
 }

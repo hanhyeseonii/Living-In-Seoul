@@ -1,0 +1,63 @@
+@charset "UTF-8";
+
+#stationNav{
+	display: flex;
+	align-content: center;
+	justify-content: space-around;
+}
+
+#map{
+	margin: 0 auto;
+	width: 860px;
+	height: 500px;
+}
+
+#stationAddress{
+	width: 300px;
+}
+
+#bicycle{
+	position: absolute;
+	width: 30px;
+	height: 40px;
+	
+}
+
+.input_serch{
+	display: flex;
+	align-content: inherit;
+}
+
+.media{
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+iframe{
+	border: none;
+	width: 860px;
+	height: 500px;
+}
+
+.title{
+	display: flex;
+	align-content: center;
+	justify-content: center;
+}
+
+.markers {
+    border-radius: 50%;
+    behavior: url(PIE.htc); /* remove if you don't care about IE8 */
+
+    width: 30px;
+    height: 30px;
+    padding: 5px;
+    
+    background: green;
+    border: 2px solid aqua;
+    color: white;
+    text-align: center;
+    
+    font: 15px Arial, sans-serif;
+}

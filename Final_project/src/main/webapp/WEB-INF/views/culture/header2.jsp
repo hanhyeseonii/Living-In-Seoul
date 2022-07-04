@@ -9,9 +9,9 @@
 <body>
 	<header>
 		<h2>Living in Seoul</h2>
-		<a href="${path}/board/list">맛집</a>
-		<a href="${path}/tourism/list">관광지</a>
-		<a href="${path}/board/sessionClear">세션 지우기</a>
+		<a href="${path}/culture/board/list">맛집</a>
+		<a href="${path}/culture/tourism/list">관광지</a>
+		<a href="${path}/culture/board/sessionClear">세션 지우기</a>
 		
 	</header>
 	

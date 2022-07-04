@@ -1,90 +1,12 @@
-$(function(){ 
+$(()=>{ 
 	var path = $('#contextPath').val(); 
-	var position = new naver.maps.LatLng(37.484746663141095, 126.93006829643338);
+	var map = new naver.maps.Map('map', {
+	    center: new naver.maps.LatLng(37.3595704, 127.105399),
+		zoom:15
+	});
 	
-	//맵 옵션
-	var mapOptions = { 
-	    center: position, // 지도초기 중심좌표
-	    zoom: 14 
-	}; 
-	
-	//map 객체
-	//지도를 표한할 'map' 엘리먼트, mapOtion을 이용하여 생성 
-	var map = new naver.maps.Map('map', mapOptions); 
-	
-	//마커 옵션
-	/*var markerOptions = {
-		position: position,
-	    map: map,
-	}*/
-	
-	var maker = new naver.maps.Marker({
-        map: map,
-        position: position
-    });
-	
-	/*var greenMarker = new naver.maps.Marker({
-	    position: position,
-        map: map,
-        title: 'Green Marker',
-        icon: {
-            content: [
-                '<div class="cs_mapbridge">',
-                '<div class="map_group _map_group crs">',
-                '<div class="map_marker _marker num1 num1_big"> ',
-                '<span class="ico _icon"></span>',
-                '<span class="shd"></span>',
-                '</div>',
-                '</div>',
-                '</div>'
-            ].join(''),
-            size: new naver.maps.Size(38, 58),
-            anchor: new naver.maps.Point(19, 58),
-        },
-        draggable: true
-    });*/
-	
-
-	//비동기 방식으로 출력할 맵을 생성하는 함수
-	function initMap(stationLatitude, stationLongitude) {
-		map = new naver.maps.Map('map', {
-			center: new naver.maps.LatLng(stationLatitude, stationLongitude),
-			zoom: 14
-		});
-	}
-	
-	//맵에 좌표로 마커찍어주는 함수
-	function addMaker(stationLatitude, stationLongitude){
-		
-		marker = new naver.maps.Marker({
-			position: new naver.maps.LatLng(stationLatitude, stationLongitude),
-			map: map,
-			/*icon: {
-				path: [
-        			new naver.maps.Point(0, 70), new naver.maps.Point(20, 100), new naver.maps.Point(40, 70),
-        			new naver.maps.Point(30, 70), new naver.maps.Point(70, 0), new naver.maps.Point(10, 70)
-    			],
-				style : "CIRCLE",
-				radius : 1,
-		        anchor: new naver.maps.Point(23, 103),
-		        fillColor: '#ff0000', //폴리곤 배경색
-		        fillOpacity: 1,	//폴리곤 배경색의 불투명도(0~1)
-		        strokeColor: '#000000', //폴리곤 선의 색상
-		        strokeStyle: 'solid', //
-		        strokeWeight: 3 //폴리곤 선의 두께
-		    },
-		    shadow: {
-		        url: "./img/shadow-arrow.png",
-		        size: new naver.maps.Size(193, 128),
-		        origin: new naver.maps.Point(0, 0),
-		        anchor: new naver.maps.Point(62, 120)
-		    }*/
-		});
-			
-	}
-	
-	//검색 클릭시 ajax비동기 방식 호출
-	$('#serch_station').click(()=>{
+	//실시간 대여소 정보 받아와 맵에 뿌려주는 함수
+	function stationList(){
 		var stationId = $('#stationId').val();
 		if(stationId!=''){ // 유효성 체크
 		
@@ -93,13 +15,81 @@ $(function(){
 				type : 'get',
 				dataType : 'json', // 응답받을 데이터 타입
 				success : (json)=>{
-					console.log(json);
 					
-					//맵의 센터위치 변경
-					initMap(json[0].stationLatitude, json[0].stationLongitude);
-					for(var i=0;i<json.length;i++){
-						addMaker(json[i].stationLatitude, json[i].stationLongitude);
+					//맵 센터 이동
+					map.setCenter(new naver.maps.LatLng(json[0].stationLatitude, json[0].stationLongitude));
+					
+					var markers = [],
+					    infoWindows = [];
+					
+					//맵에 좌표로 마커찍어주는 함수
+					for(key in json){
+					    var position = new naver.maps.LatLng( json[key].stationLatitude, json[key].stationLongitude);
+					    var marker = new naver.maps.Marker({
+					        map: map,
+					        position: position,
+					        title: json[key].stationId,
+							icon: {
+						        content: [
+						                    `<div class="markers">${json[key].parkingBikeTotCnt}</div>`
+						                ].join(''),
+						        size: new naver.maps.Size(30, 30),
+						    },
+					    });
+					    var infoWindow = new naver.maps.InfoWindow({
+					        content: '<div style="width:150px;text-align:center;padding:10px;"> <b>'+ json[key].stationName +'</b><br>'
+								+ json[key].rackTotCnt + '/'+ json[key].parkingBikeTotCnt + ' </div>'
+					    });
+						
+					    markers.push(marker);
+					    infoWindows.push(infoWindow);
 					}
+					
+					naver.maps.Event.addListener(map, 'idle', function() {
+					    updateMarkers(map, markers);
+					});
+					
+					//맵 범위 안의 마커만 출력
+					function updateMarkers(map, markers) {
+					    var mapBounds = map.getBounds();
+					    var marker, position;
+					    for (var i = 0; i < markers.length; i++) {
+					        marker = markers[i]
+					        position = marker.getPosition();
+					        if (mapBounds.hasLatLng(position)) {
+					            showMarker(map, marker);
+					        } else {
+					            hideMarker(map, marker);
+					        }
+					    }
+					}
+					
+					function showMarker(map, marker) {
+					    if (marker.setMap()) return;
+					    marker.setMap(map);
+					}
+					function hideMarker(map, marker) {
+					    if (!marker.setMap()) return;
+					    marker.setMap(null);
+					}
+					
+					//해당 마커의 인덱스를 seq라는 클로저 변수로 저장하는 이벤트 핸들러를 반환합니다.
+					function getClickHandler(seq) {
+					    return function(e) {
+					        var marker = markers[seq],
+					            infoWindow = infoWindows[seq];
+					        if (infoWindow.getMap()) {
+					            infoWindow.close();
+					        } else {
+					            infoWindow.open(map, marker);
+					        }
+					    }
+					}
+					
+					for (var i=0, ii=markers.length; i<ii; i++) {
+					    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
+					}
+					
 					
 				},
 				error : console.error
@@ -107,6 +97,35 @@ $(function(){
 		}else{
 			$('#stationAddress').focus();
 		}
+	}
+	
+	stationList();
+	
+	//자전거 레이어
+	var bicycleLayer = new naver.maps.BicycleLayer();
+	var btn = $('#bicycle');
+	
+	naver.maps.Event.addListener(map, 'bicycleLayer_changed', function(bicycleLayer) {
+	    if (bicycleLayer) {
+	        btn.addClass('control-on');
+	    } else {
+	        btn.removeClass('control-on');
+	    }
+	});
+	
+	btn.on("click", function(e) {
+	    e.preventDefault();
+	
+	    if (bicycleLayer.getMap()) {
+	        bicycleLayer.setMap(null);
+	    } else {
+	        bicycleLayer.setMap(map);
+	    }
+	});
+					
+	//검색 클릭시 ajax비동기 방식 호출
+	$('#serch_station').click(()=>{
+		stationList();
 	});
 	
 	//자동완성 autocomplete
@@ -134,7 +153,7 @@ $(function(){
 					console.error
 				}
         	});
-        },    // source 는 자동 완성 대상
+        },    // source는 자동완성 대상
         select : function(event, ui) {  //아이템 선택시
 			$('#stationId').val(ui.item.stationId);
         },
