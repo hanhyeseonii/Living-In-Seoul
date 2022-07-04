@@ -70,7 +70,7 @@ private static final Logger logger = LoggerFactory.getLogger(NaverServiceImpl.cl
 		Map<String, String> rmap = new HashMap<String, String>();
 		try {
 			String clientId = "gsPvcqe99qlCH9okPe29";// 애플리케이션 클라이언트 아이디값";
-			String redirectURI = URLEncoder.encode(naverRedirectUrl+"myapp/naverCallback", "UTF-8");
+			String redirectURI = URLEncoder.encode(naverRedirectUrl+"myapp/member/naverCallback", "UTF-8");
 			// 인증값(state)생성
 			SecureRandom random = new SecureRandom();
 			String state = new BigInteger(130, random).toString();
@@ -97,7 +97,7 @@ private static final Logger logger = LoggerFactory.getLogger(NaverServiceImpl.cl
 		String clientSecret = "znepOS_xEW";// 애플리케이션 클라이언트 시크릿값";
 		String access_token = "";
 		try {
-			String redirectURI = URLEncoder.encode(naverRedirectUrl+"myapp/naverCallback", "UTF-8");
+			String redirectURI = URLEncoder.encode(naverRedirectUrl+"myapp/member/naverCallback", "UTF-8");
 			String apiURL;
 			apiURL = "https://nid.naver.com/oauth2.0/token?grant_type=authorization_code&";
 			apiURL += "client_id=" + clientId;

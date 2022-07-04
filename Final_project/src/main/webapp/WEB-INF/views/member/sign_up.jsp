@@ -11,24 +11,24 @@
 <body>
 	<%@ include file="../header.jsp"%>
 	<h5>SIGN UP</h5>
-	<form id="frmSign_up" action="${path}/member/sign_up" method="post" enctype="multipart/form-data">
+	<form name="frmSign_up" id="frmSign_up" action="${path}/member/sign_up" method="post" enctype="multipart/form-data">
 		<table>
 			<tr>
 				<th>email</th>
 				<td>
-				<input type="email" name="email" id="email"/>
+				<input type="email" name="email" id="email" placeholder="이메일" />
 				<button type="button" onclick="duplCheck(event,'${path}')">중복확인</button>
 				</td>
 			</tr>
 			<tr>
 				<th>name</th>
-				<td><input type="text" name="name" id="name"/></td>
+				<td><input type="text" name="name" id="name" placeholder="이름" /></td>
 			</tr>
 			<tr>
 				<th>password</th>
 				<td>
-				<input type="password" name="passwd" id="passwd"/><br>
-				<input type="password" name="againpasswd" id="againpasswd"/>
+				<input type="password" name="passwd" id="passwd" placeholder="비밀번호" /><br>
+				<input type="password" name="againpasswd" id="againpasswd" placeholder="비밀번호확인" />
 				<button type="button" onclick="passwdCheck(event)">일치확인</button>
 				</td>
 			</tr>
@@ -38,11 +38,11 @@
 			</tr>
 			<tr>
 				<th>address</th>
-				<td><input type="text" name="address" id="address"/></td>
+				<td><input type="text" name="address" id="address" placeholder="주소" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button>sign up</button>
+					<button onclick="loginCheck(event)">sign up</button>
 				</td>
 			</tr>
 		</table>

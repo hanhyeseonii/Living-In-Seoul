@@ -10,19 +10,15 @@
 <body>
 	<%@ include file="../header.jsp"%>
 	<h5>MEMBERSHIP WITHDRAWAL</h5>
-	<form action="${path}/member/">
+	<form action="${path}/member/drawal" method="post">
 		<table>
 			<tr>
 				<th>email</th>
-				<td>${email}</td>
+				<td><input name="email" value="${email}"></td>
 			</tr>
 			<tr>
 				<th>withdrawal reason</th>
-				<td><textarea name="wdrawrs" id="wdrawrs" rows="5" cols="25">${wdraw.wdrawrs}</textarea></td>
-			</tr>
-			<tr>
-				<th>password</th>
-				<td><input type="password" name="passwd" id="passwd"/></td>
+				<td><textarea name="wdrawrs" id="wdrawrs" rows="5" cols="25" placeholder="탈퇴사유" >${wdraw.wdrawrs}</textarea></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">

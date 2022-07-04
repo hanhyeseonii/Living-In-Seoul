@@ -6,6 +6,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript" src="${path}/resources/js/member/info.js"></script>
 </head>
 <body>
 <div class="container">
@@ -33,8 +34,12 @@
 			<th>password</th>
 			<td>
 			****
-			<button type="button" onclick="location.href='passwd_modify'">변경</button>
+			<button type="button" onclick="location.href='passwd_modify'" id="btnmdpw">변경</button>
 			</td>
+		</tr>
+		<tr>
+			<!-- 간편가입 여부 -->
+			<td><input type="hidden" id="simplejoin" value="${member.simplejoin}"></td>
 		</tr>
 		<tr>
 			<th>등록일자</th>

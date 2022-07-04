@@ -14,8 +14,8 @@ public interface MemberService {
 	ErrorCode insert(Member member, HttpSession session);
 	//로그인
 	ErrorCode loginCheck(String email, String passwd);
-	ErrorCode wdrawinsert(Wdraw wdraw);
 	//탈퇴
+	ErrorCode wdrawinsert(Wdraw wdraw, HttpSession session);
 	Wdraw wdrawselectOne(String email);
 	List<Wdraw> selectList(Map<String, String> wmap);
 	//정보

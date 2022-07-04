@@ -15,11 +15,11 @@
 		<table>
 			<tr>
 				<th>email</th>
-				<td><input type="email" name="email" id="email" value="${member.email}" readonly></td>
+				<td><input type="email" value="${member.email}"  id="email"  name="email" readonly></td>
 			</tr>
 			<tr>
 				<th>name</th>
-				<td><input type="text" name="name" id="name" value="${member.name}"></td>
+				<td>${member.name}</td>
 			</tr>
 			<tr>
 				<th>birthdate</th>
@@ -27,7 +27,7 @@
 			</tr>
 			<tr>
 				<th>address</th>
-				<td><input type="text" name="address" id="address" value="${member.address}"></td>
+				<td><input type="text" name="address" id="address" value="${member.address}"placeholder="주소" ></td>
 			</tr>
 			<tr>
 				<td>

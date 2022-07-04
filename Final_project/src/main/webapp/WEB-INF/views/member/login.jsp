@@ -15,11 +15,11 @@
 		<table align="center">
 			<tr>
 				<th><i class="fas fa-envelope"></i></th>
-				<td><input type="email" name="email" id="email"/></td>
+				<td><input type="email" name="email" id="email" placeholder="이메일" /></td>
 			</tr>
 			<tr>
 				<th><i class="fas fa-key"></i></th>
-				<td><input type="password" name="passwd" id="passwd"/></td>
+				<td><input type="password" name="passwd" id="passwd" placeholder="비밀번호" /></td>
 			</tr>
 			<tr>
 				<td colspan="2">

@@ -86,23 +86,17 @@ public class MemberServiceImpl implements MemberService {
 	//탈퇴 사유 입력
 	@Transactional
 	@Override
-	public ErrorCode wdrawinsert(Wdraw wdraw) {
+	public ErrorCode wdrawinsert(Wdraw wdraw, HttpSession session) {
 		
 		//1)탈퇴사유를 입력하지 않았다면
 		if(wdraw.getWdrawrs().equals("")) {
 			return ErrorCode.ERROR_NONINSERT_WDRS;
+		}else {
+			//성공
+			wdrawRepository.insert(wdraw); //탈퇴사유를 insert
+			memberRepository.delete(wdraw.getEmail()); //탈퇴회원을 지우기
+			return ErrorCode.WDRAW_SUCCESS;
 		}
-		//2)비밀번호가 일치하지 않는다면
-		//평문과 암호문을 비교(평문, 암호문)
-		Member member = memberRepository.selectOne(wdraw.getEmail());
-		boolean match = bCryptPasswordEncoder.matches(wdraw.getPasswd(), member.getPasswd());
-		if(!match) {
-			return ErrorCode.ERROR_NONMATCH_PASSWD;
-		}
-		//성공
-		wdrawRepository.insert(wdraw); //탈퇴사유를 insert
-		memberRepository.delete(wdraw.getEmail()); //탈퇴회원을 지우기
-		return ErrorCode.WDRAW_SUCCESS;
 		
 	}
 

@@ -16,8 +16,8 @@
 			<tr>
 				<th>password</th>
 				<td>
-				<input type="password" name="passwd" id="passwd"/><br>
-				<input type="password" name="againpasswd" id="againpasswd" onchange="savePasswdmd(event)"/>
+				<input type="password" name="passwd" id="passwd" placeholder="새비밀번호" /><br>
+				<input type="password" name="againpasswd" id="againpasswd" onchange="savePasswdmd(event)" placeholder="비밀번호확인" />
 				<button type="button" onclick="savePasswdmd(event)">일치확인</button>
 				</td>
 			</tr>

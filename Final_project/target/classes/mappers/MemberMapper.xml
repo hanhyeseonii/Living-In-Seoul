@@ -12,7 +12,6 @@
 	<update id="update">
 		update member
 		set 
-		name=#{name},
 		birthdate =#{birthdate},
 		address=#{address},
 		modidate=now()

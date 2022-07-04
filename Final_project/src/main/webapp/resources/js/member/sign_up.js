@@ -35,3 +35,28 @@ function passwdCheck(e){
 		alert('비밀번호가 일치합니다.');
 		
 }
+
+/*일반회원가입일 때 이메일, 주소, 비밀번호 값은 꼭 입력할 수 있도록*/
+function loginCheck(e){
+	e.preventDefault();
+	const email = document.getElementById('email').value;
+	const passwd = document.getElementById('passwd').value;
+	const address = document.getElementById('address').value;
+	
+	if(!email){
+		alert('이메일을 등록해주세요.');
+		document.getElementById('email').focus();
+		return;
+	}
+	if(!passwd){
+		alert('비밀번호를 입력해주세요.');
+		document.getElementById('passwd').focus();
+		return;
+	}
+	if(!address){
+		alert('주소를 입력해주세요.');
+		document.getElementById('address').focus();
+		return;
+	}
+	frmSign_up.submit();
+}

@@ -23,6 +23,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.spring.myapp.advice.ErrorCode;
 import com.spring.myapp.dto.Member;
+import com.spring.myapp.dto.Wdraw;
 import com.spring.myapp.service.MemberService;
 import com.spring.myapp.service.NaverService;
 
@@ -36,7 +37,6 @@ public class MemberController {
 	
 	@Autowired
 	private NaverService naverService;
-
 
 	//홈으로 이동
 	@GetMapping("/")
@@ -60,23 +60,50 @@ public class MemberController {
 		
 	}
 	
-	
 	//로그인 폼으로 이동(네이버간편)
-	@GetMapping("naverlogin")
-	public void naverlogin(HttpSession session,HttpServletRequest request, Model model) throws Exception {
-	 	//네이버 간편가입 위해서 apiURL 얻기
-		Map<String, String> rmap = naverService.getApiUrl(request.getContextPath());
-		logger.info(rmap.toString());
-		//세션에 state넣기(callback메소드에서 인증하기 위해서)
-		session.setAttribute("state", rmap.get("state"));
-		//jsp에 보내기
-		model.addAttribute("apiURL", rmap.get("apiURL"));
-	}
-	
-	//로그인 폼으로 이동
-	@GetMapping("login")
-	public void login() {
-	}
+		@GetMapping("login")
+		public String login(HttpSession session,HttpServletRequest request, Model model) throws Exception {
+		 	//네이버 간편가입 위해서 apiURL 얻기
+			Map<String, String> rmap = naverService.getApiUrl(request.getContextPath());
+			logger.info(rmap.toString());
+			//세션에 state넣기(callback메소드에서 인증하기 위해서)
+			session.setAttribute("state", rmap.get("state"));
+			//jsp에 보내기
+			model.addAttribute("apiURL", rmap.get("apiURL"));
+			return "member/login";
+		}
+		
+		//1)네이버 로그인 요청(GET:로그인창으로 이동)
+		//2)callback주소로 code, state 받기
+		//3)code, state를 이용해서 access_token 얻기(회원정보 얻기)
+		//4)access_token를 이용해서 개인회원정보 요청
+		
+		//네이버 콜백 주소
+		@GetMapping("naverCallback")
+		public String naverCallback(@RequestParam String code, @RequestParam String state, HttpSession session, RedirectAttributes rattr) {
+			logger.info(code); //네이버에서 만들어준 코드(동의했다)
+			logger.info(state);
+			//세션의 state와 파라메터의 state가 일치한다면 정상 사용자
+			String state_s = (String) session.getAttribute("state");
+			logger.info("session state :" + state_s);
+			
+			if (state_s != null && state_s.equals(state)) {
+				ErrorCode errorCode= naverService.naverLogin(code, state, session);
+				rattr.addFlashAttribute("msg", errorCode.getMsg());
+				//code가 0이면 session에 email넣고 home으로 이동
+				if (errorCode.getCode()==0) {
+					return "redirect:/member/"; 
+				}
+				//아니면 login.jsp로 이동
+				return "redirect:/member/login";
+					
+			}else {
+				//state_s이 null이거나 state_s가 일치하지 않는다면
+			rattr.addFlashAttribute("msg", ErrorCode.ERROR_NAVERAUTH.getMsg());
+				return "redirect:/member/login";
+			}
+			 
+		}
 	
 	//로그인 버튼을 눌렀을 때
 	@PostMapping("login")
@@ -140,38 +167,6 @@ public class MemberController {
 		session.invalidate();
 		
 		return "redirect:/member/";
-	}
-	
-	//1)네이버 로그인 요청(GET:로그인창으로 이동)
-	//2)callback주소로 code, state 받기
-	//3)code, state를 이용해서 access_token 얻기(회원정보 얻기)
-	//4)access_token를 이용해서 개인회원정보 요청
-	
-	//네이버 콜백 주소
-	@GetMapping("naverCallback")
-	public String naverCallback(@RequestParam String code, @RequestParam String state, HttpSession session, RedirectAttributes rattr) {
-		logger.info(code); //네이버에서 만들어준 코드(동의했다)
-		logger.info(state);
-		//세션의 state와 파라메터의 state가 일치한다면 정상 사용자
-		String state_s = (String) session.getAttribute("state");
-		logger.info("session state :" + state_s);
-		
-		if (state_s != null && state_s.equals(state)) {
-			ErrorCode errorCode= naverService.naverLogin(code, state, session);
-			rattr.addFlashAttribute("msg", errorCode.getMsg());
-			//code가 0이면 session에 email넣고 home으로 이동
-			if (errorCode.getCode()==0) {
-				return "redirect:/"; 
-			}
-			//아니면 login.jsp로 이동
-			return "redirect:login";
-				
-		}else {
-			//state_s이 null이거나 state_s가 일치하지 않는다면
-		rattr.addFlashAttribute("msg", ErrorCode.ERROR_NAVERAUTH.getMsg());
-			return "redirect:login";
-		}
-		 
 	}
 		
 	//이메일을 눌렀을 때
@@ -254,13 +249,18 @@ public class MemberController {
 	
 	//탈퇴 버튼을 눌렀을 때(home으로 이동)
 	@PostMapping("drawal")
-	public String drawal(@ModelAttribute Member member, Model model,RedirectAttributes rattr, HttpSession session){
-		logger.info(member.toString());
-		ErrorCode errorCode = memberService.insert(member, session);
+	public String drawal(@ModelAttribute Wdraw wdraw, Model model,RedirectAttributes rattr, HttpSession session){ 
+		logger.info(wdraw.toString());
+		ErrorCode errorCode = memberService.wdrawinsert(wdraw, session);
 		rattr.addFlashAttribute("msg",errorCode.getMsg());
-		
-		return "member/";
+		if(errorCode.getCode() !=0) {
+			model.addAttribute("msg",errorCode.getMsg());
+			return "member/drawal";
+		}else { //성공시
+			session.invalidate();//세션지우기
+			rattr.addFlashAttribute("msg",errorCode.getMsg());
+			return "redirect:/member/";
+		}
 	}
-	
 
 }
