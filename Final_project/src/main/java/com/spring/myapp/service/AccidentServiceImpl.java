@@ -10,9 +10,7 @@ import com.spring.myapp.dto.Accident;
 import com.spring.myapp.repository.AccidentRepository;
 
 import java.net.URLEncoder;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.xml.parsers.DocumentBuilderFactory;
 
@@ -24,7 +22,8 @@ public class AccidentServiceImpl implements AccidentService {
 	
 	@Override
 	public void insert() {
-		Accident check = accidentRepository.selectOne();
+		int checkCnt=0;
+		List<Accident> checkList = accidentRepository.selectList();
 		try {
 			String serviceKey = "455544657a64627335314a614a466b";
 			StringBuilder urlBuilder = new StringBuilder("http://openapi.seoul.go.kr:8088"); /*URL*/
@@ -33,14 +32,12 @@ public class AccidentServiceImpl implements AccidentService {
 			urlBuilder.append("/" + URLEncoder.encode("AccInfo","UTF-8")); /*서비스명 (대소문자 구분 필수입니다.)*/
 			urlBuilder.append("/" + URLEncoder.encode("1","UTF-8")); /*요청시작위치 (sample인증키 사용시 5이내 숫자)*/
 			urlBuilder.append("/" + URLEncoder.encode("5","UTF-8")); /*요청종료위치(sample인증키 사용시 5이상 숫자 선택 안 됨)*/
-			System.out.println(urlBuilder);
 			
             Document doc = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(urlBuilder.toString());
-            NodeList nlist = doc.getElementsByTagName("item");
-            
-            if(nlist!=null) {
+            NodeList nlist = doc.getElementsByTagName("row");
+            if(nlist.getLength()!=0) {
             	loop:
-    			for(int i=0; i < nlist.getLength(); i++) {
+    			for(int i=nlist.getLength()-1; i >= 0; i--) {
     				NodeList alist =  nlist.item(i).getChildNodes(); 
     				Accident accident = new Accident();
     				for(int j=0; j<alist.getLength(); j++) {
@@ -51,11 +48,18 @@ public class AccidentServiceImpl implements AccidentService {
 							accident.setAccInfo(node.getTextContent());
 						}
     				}
-    				if(check!=null&&accident.getAccId()==check.getAccId()) {
-    					break loop;
-    				}else {
-    					accidentRepository.insert(accident);
+    				if(checkList!=null) {
+        				for (int k=0; k<checkList.size();k++) {
+        					if (accident.getAccId()==checkList.get(k).getAccId()) {
+        						checkCnt=1;
+        					}
+        				}
+        				if(checkCnt==1) {
+        					break loop;
+        				}
     				}
+    				accidentRepository.insert(accident);
+
     			}
             }
 			

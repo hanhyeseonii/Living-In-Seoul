@@ -8,10 +8,13 @@
 		values(#{accId},#{accInfo},now())
 	</insert>
 	
-	  <delete id="delete">
-	 		delete from accident 
-	 		<![CDATA[where regidate < DATE_ADD(NOW(), INTERVAL -3 HOUR)]]>
-	 	</delete>
+	<delete id="delete">
+	
+		delete from accident 
+		<![CDATA[
+			where regidate < date_sub(now(),interval 1 hour);
+ 		]]>
+ 	</delete>
 	
 	<select id="selectOne" resultType="Accident">
 		select * from accident

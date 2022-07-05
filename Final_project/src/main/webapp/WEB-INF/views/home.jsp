@@ -35,10 +35,10 @@ $(function(){
 		<hr>
 		<div class="weatherCovid">
 			[날씨] 서울시&nbsp;<div class="weather-text"></div>
-				&nbsp;│[코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
-				&nbsp;사망자 수&nbsp;<div class="death-cnt"></div>
-				&nbsp;│[사고]&nbsp;<div class="accident-text"></div>
+				│[코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
+				사망자 수&nbsp;<div class="death-cnt"></div>
 		</div>
+		<div class="weatherCovid"><h5 style="font-weight: bold;">돌발 정보</h5>&nbsp;<div style="text-decoration: underline;" class="accident-text"></div></div>
 		<hr>
 		<div class="menu">
 			<div class="menuCard">

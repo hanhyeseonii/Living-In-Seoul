@@ -1,14 +1,12 @@
 package com.spring.myapp.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.spring.myapp.dto.Accident;
 import com.spring.myapp.service.AccidentService;
 
 @Controller
@@ -30,10 +28,6 @@ public class AccidentController {
 		return as.selectOne().getAccInfo();
 	}
 	
-	@Scheduled(cron="0 */5 * * * *")
-	public void apiUpdate() {
-		as.insert();
-	}
 	
 
 }

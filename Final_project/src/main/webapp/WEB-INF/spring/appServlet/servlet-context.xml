@@ -18,8 +18,12 @@
 		<beans:property name="fileEncoding" value="utf-8"/>
 	</beans:bean>
 	
-	<!-- 자동실행 스케쥴러 어노테이션 -->
-	<task:annotation-driven />
+	<!-- 스케쥴러 설정 -->
+	<!-- ThreadPoolTaskScheduler 인스턴스 생성 -->
+	<!-- pool-size : 10개의 쓰레드 사용 가능 --> 
+	<context:component-scan base-package="com.spring.my.schedule"/>
+		<task:scheduler id="jobScheduler"  pool-size="10"/>
+		<task:annotation-driven scheduler="jobScheduler"/>
 	
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
