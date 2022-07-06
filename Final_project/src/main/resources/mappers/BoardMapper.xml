@@ -44,7 +44,6 @@
 		where removeyn = 'n'
 			<include refid="find"/>
 		order by bnum desc
-		limit #{startNum} , #{perPage}
 	</select>
 	
 	<!-- 전체게시물수 구하기 -->

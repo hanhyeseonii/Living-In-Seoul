@@ -5,7 +5,7 @@
 function removeCheck(path, bnum){
 	if(!confirm('삭제 하시겠습니까?')) return ;
 
-	location.href=path+'/board/remove?bnum='+bnum;
+	location.href=path+'/culture/board/remove?bnum='+bnum;
 }
 
 //로딩이 완료된후
@@ -17,7 +17,7 @@ window.addEventListener('load',()=>{
 		const bnum = document.getElementById('bnum').innerText;
 		console.log(bnum);
 		//비동기방식으로 서버호출
-		fetch('/myapp/board/like/'+bnum, {
+		fetch('/myapp/culture/board/like/'+bnum, {
 			method : 'put',
 		})
 		.then(res=>res.text())
@@ -35,7 +35,7 @@ window.addEventListener('load',()=>{
 		const bnum = document.getElementById('bnum').innerText;
 		
 		//백틱안에 자바스트립트 변수 ${}
-		fetch(`/myapp/board/dislike/${bnum}`,{
+		fetch(`/myapp/culture/board/dislike/${bnum}`,{
 			method : 'put'
 		})
 		.then(res=> res.text())

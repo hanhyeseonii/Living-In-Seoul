@@ -19,7 +19,7 @@ public class FileServiceImpl implements FileService{
 //	private String savedir;
 	
 	//application.properties의 환경설정값
-	@Value("${file.savedir}")
+	@Value("${file.savedir.culture}")
 	private String savedir;
 	
 	

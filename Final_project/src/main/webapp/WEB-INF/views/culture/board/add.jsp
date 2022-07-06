@@ -10,9 +10,7 @@
 </head>
 <body>
 <div class="container">
-	<%@ include file="../header.jsp" %>
-	<hr>
-	<h5>맛집 - 공유할 맛집 정보 글을 올려주세요</h5>
+	<%@ include file="../header2.jsp" %>
 	
 	<h2>맛집 글쓰기</h2>
 	<form action="${path}/culture/board/add" method="post" enctype="multipart/form-data">

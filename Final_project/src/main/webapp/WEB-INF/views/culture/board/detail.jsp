@@ -36,10 +36,8 @@
 </head>
 <body>
 <div class="container">
-	<%@ include file="../header.jsp" %>
-	<hr>
-	<h5>맛집 - 공유할 맛집 정보 글을 올려주세요</h5>
-	
+	<%@ include file="../header2.jsp" %>
+
 	<table border="1">
 		<tr>
 			<th>번호</th>
@@ -60,11 +58,9 @@
 		<tr>
 			<th>파일</th>
 			<td>
-				<div class="bxslider">
-					<c:forEach var="boardFile" items="${bflist}">
-						<div><img src="${path}/resources/images/${boardFile.filename}"></div>
-					</c:forEach>
-				</div>
+				<c:forEach var="boardFile" items="${bflist}">
+					${boardFile.filename} <br>
+				</c:forEach>
 			</td>
 		</tr>
 		<tr>

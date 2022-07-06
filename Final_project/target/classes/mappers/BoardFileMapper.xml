@@ -5,8 +5,8 @@
   
 <mapper namespace="com.spring.myapp.BoardFileMapper">
 	<insert id="insert">
-		INSERT INTO boardfile(bfnum, bnum, filename)
-		VALUES(#{bfnum}, #{bnum}, #{filename})
+		INSERT INTO boardfile(bnum, filename)
+		VALUES(#{bnum}, #{filename})
 	</insert>
 	<update id="update">
 		UPDATE boardfile

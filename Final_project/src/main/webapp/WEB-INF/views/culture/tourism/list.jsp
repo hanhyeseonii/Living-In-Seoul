@@ -9,10 +9,8 @@
 </head>
 <body>
 <div class="container">
-	<%@ include file="../header.jsp" %>
-	<hr>
-	<h5>관광지 - 서울의 다양한 관광지를 즐겨보세요!</h5>
-	
+	<%@ include file="../header3.jsp" %>
+
 	<table border="1">
 		<tr>
 			<th>번호</th>

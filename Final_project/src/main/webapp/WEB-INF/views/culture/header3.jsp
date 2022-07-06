@@ -7,11 +7,8 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<header>
-		<h2>Living in Seoul</h2>
-		<a href="${path}/culture/board/list">맛집</a>
-		<a href="${path}/culture/tourism/list">관광지</a>
-	</header>
-	
+	<%@ include file="../header.jsp" %>
+
+	<h5>관광지 - 서울의 다양한 관광지를 즐겨보세요!</h5>
 </body>
 </html>

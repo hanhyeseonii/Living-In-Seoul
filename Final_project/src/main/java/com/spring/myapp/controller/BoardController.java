@@ -4,6 +4,8 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -31,6 +33,7 @@ import com.spring.myapp.service.BoardService;
 @RequestMapping("culture/board")
 //@SessionAttributes("page") //1)세션에 담을 변수명
 public class BoardController {
+	private static final Logger logger = LoggerFactory.getLogger(BoardController.class);
 	@Autowired
 	private BoardService boardService;
 	@Autowired
