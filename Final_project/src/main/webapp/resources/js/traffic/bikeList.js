@@ -1,26 +1,29 @@
 $(()=>{ 
-	var path = $('#contextPath').val(); 
+	const path = $('#contextPath').val(); 
+	const sessionEmail = $('#sessionEmail').text().trim();
+	
 	var map = new naver.maps.Map('map', {
-	    center: new naver.maps.LatLng(37.3595704, 127.105399),
+	    center: new naver.maps.LatLng(37.48450851, 126.93006897),
 		zoom:15
 	});
+	
+	var markers = [],
+		favoritMaker = [],
+   		infoWindows = [];
 	
 	//실시간 대여소 정보 받아와 맵에 뿌려주는 함수
 	function stationList(){
 		var stationId = $('#stationId').val();
 		if(stationId!=''){ // 유효성 체크
-		
+			
 			$.ajax({
-				url : `${path}/traffic/serch/${stationId}`,
+				url : `${path}/traffic/serch/`,
 				type : 'get',
+				data : {"stationId": stationId},
 				dataType : 'json', // 응답받을 데이터 타입
 				success : (json)=>{
-					
 					//맵 센터 이동
 					map.setCenter(new naver.maps.LatLng(json[0].stationLatitude, json[0].stationLongitude));
-					
-					var markers = [],
-					    infoWindows = [];
 					
 					//맵에 좌표로 마커찍어주는 함수
 					for(key in json){
@@ -38,7 +41,8 @@ $(()=>{
 					    });
 					    var infoWindow = new naver.maps.InfoWindow({
 					        content: '<div style="width:150px;text-align:center;padding:10px;"> <b>'+ json[key].stationName +'</b><br>'
-								+ json[key].rackTotCnt + '/'+ json[key].parkingBikeTotCnt + ' </div>'
+								+ json[key].rackTotCnt + '/'+ json[key].parkingBikeTotCnt + 
+								`<button class="addFavorite" valu="${json[key].stationId}"><img class="info_favorite" src="${path}/resources/images/aside_favorite2.png"></button></div>`
 					    });
 						
 					    markers.push(marker);
@@ -90,7 +94,6 @@ $(()=>{
 					    naver.maps.Event.addListener(markers[i], 'click', getClickHandler(i));
 					}
 					
-					
 				},
 				error : console.error
 			});
@@ -103,17 +106,17 @@ $(()=>{
 	
 	//자전거 레이어
 	var bicycleLayer = new naver.maps.BicycleLayer();
-	var btn = $('#bicycle');
+	var bikeBtn = $('#bike_rayer');
 	
 	naver.maps.Event.addListener(map, 'bicycleLayer_changed', function(bicycleLayer) {
 	    if (bicycleLayer) {
-	        btn.addClass('control-on');
+	        bikeBtn.addClass('control-on');
 	    } else {
-	        btn.removeClass('control-on');
+	        bikeBtn.removeClass('control-on');
 	    }
 	});
 	
-	btn.on("click", function(e) {
+	bikeBtn.on("click", function(e) {
 	    e.preventDefault();
 	
 	    if (bicycleLayer.getMap()) {
@@ -124,7 +127,14 @@ $(()=>{
 	});
 					
 	//검색 클릭시 ajax비동기 방식 호출
-	$('#serch_station').click(()=>{
+	$('#serch_station').click((e)=>{
+		e.preventDefault();		
+		
+		//기존마커 삭제(덜구현)
+		for(var i=0;i<markers.length;i++){
+			markers[i].setMap(null);
+		}	
+		
 		stationList();
 	});
 	
@@ -177,4 +187,54 @@ $(()=>{
 		.appendTo( ul );
 	};
 	
+	
+	//즐겨찾기 추가
+	$('.addFavorite').on("click",function(e){
+		e.preventDefault();
+		
+		var stationId = $('.addFavorite').val();
+		console.log(stationId);
+	})
+	
+	//즐겨찾기리스트 가져오기
+	function favoriteList(){
+		if(sessionEmail!=""){
+			$.ajax({
+				type: 'get',
+                url: `${path}/traffic/favorite`,
+				data: {"email":sessionEmail},
+                dataType: "json",
+				success: function(json){
+					for(key in json){
+						var position = new naver.maps.LatLng( json[key].stationLatitude, json[key].stationLongitude);	
+						var marker = new naver.maps.Marker({
+					        map: map,
+					        position: position,
+							icon: {
+						        content: [
+						                    `<div class="favorite"><img class="favorite_marker" src="${path}/resources/images/favorite.png"></div>`
+						                ].join(''),
+						        size: new naver.maps.Size(10, 10),
+						    },
+					    });
+						favoritMaker.push(marker)
+					}
+				},
+				error : ()=>{
+					console.error
+				}
+			});
+			
+		}else{
+			console.log("실행안함")
+		}
+	}
+	
+	favoriteList();
+	
+	//즐겨찾기 리스트 열기
+	$('#aside_favorite').click((e)=>{
+		e.preventDefault();
+		
+	});
 });

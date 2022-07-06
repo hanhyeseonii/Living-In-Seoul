@@ -18,24 +18,52 @@
     <link rel="stylesheet" href="${path}/resources/css/traffic.css">
     <script type="text/javascript" src="${path}/resources/js/traffic/bikeList.js"></script>
 </head>
-
 <body>
 	<%@ include file="../header.jsp" %>
 	<!-- 비동기 방식 call back 함수 지정하기 -->
 	<script type="text/javascript" src="http://openapi.map.naver.com/openapi/v3/maps.js?ncpClientId=7v323bqzdx&callback=initMap"></script>
-	<%@ include file="../include/trafficNav.jsp" %>
-	
-	<h2>따릉이 대여소</h2>
-	<div class="input_serch">
-		<input type="text" id="stationAddress" >
-		<button id="serch_station">검색</button><br>
-	</div>
-	<input type="hidden" id="contextPath" value="${path}">
-	<input type="hidden" id="stationId" value="ST-976">
-	<button id="bicycle">자전거</button>
-	<p>
-	<div id="map">
+	<%@ include file="./trafficNav.jsp" %>
+	<div class="body">
+		<aside class="aside">
+			<h6 class="aside_title">따릉이 대여소</h6>
+			<div class="traffic_content">
+				<div class="aside_profile box">
+					<img alt="프로필 사진" class="aside_profile" src="${path}/resources/images/profile.png">
+				</div>
+				<ul class="item_list">
+					<li class="aside_item">
+						<a class="aside_traffic home" href="${path}/traffic/bikeList">
+							<img class="aside_img" alt="" src="${path}/resources/images/aside_home2.png">
+							<span class="aside_text">지도홈</span>
+						</a>
+					</li>
+					<li class="aside_item">
+						<a href id="bike_rayer">
+							<img class="aside_img" alt="" src="${path}/resources/images/aside_bike.png">
+							<span class="aside_text">자전거</span>
+						</a>
+						<!-- <button class="aside_bikerayer" id="bike_rayer">
+						</button> -->
+					</li>
+					<li class="aside_item">
+						<a class="aside_favorite" href id="aside_favorite">
+							<img class="aside_img" alt="" src="${path}/resources/images/aside_favorite2.png">
+							<span class="aside_text">즐겨찾기</span>
+						</a>
+					</li>
+				</ul>
+			</div>
+		</aside>
 		
+		<main>
+			<!-- <h2 class="traffic_title">따릉이 대여소</h2> -->
+			<input type="hidden" id="contextPath" value="${path}">
+			<input type="hidden" id="stationId" value="ST-976">
+			${favoriteList}
+			<p>
+			<div id="map"></div>
+		</main>
 	</div>
+	<%@ include file="../footer.jsp" %>
 </body>
 </html>

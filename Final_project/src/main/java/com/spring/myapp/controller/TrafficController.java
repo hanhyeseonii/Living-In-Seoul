@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.spring.myapp.dto.BikeStation;
+import com.spring.myapp.dto.FavoriteBikeStation;
 import com.spring.myapp.dto.RealTimeStationInfo;
 import com.spring.myapp.service.BikeService;
 
@@ -30,8 +31,8 @@ public class TrafficController {
 	}
 	
 	@ResponseBody
-	@GetMapping("serch/{stationId}")
-	public List<RealTimeStationInfo> serch(@PathVariable String stationId) throws IOException, ParseException {
+	@GetMapping("serch")
+	public List<RealTimeStationInfo> serch(@RequestParam("stationId") String stationId) throws IOException, ParseException {
 		return bikeService.serchRealTimeStationInfo(stationId);
 	}
 	
@@ -51,5 +52,10 @@ public class TrafficController {
 	public void traffic() {
 	}
 	
+	@ResponseBody
+	@GetMapping("favorite")
+	public List<FavoriteBikeStation> favorite(@RequestParam("email") String email){
+		return bikeService.FavoriteList(email);
+	}
 	
 }

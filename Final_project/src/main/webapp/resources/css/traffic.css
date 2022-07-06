@@ -2,30 +2,119 @@
 
 #stationNav{
 	display: flex;
-	align-content: center;
 	justify-content: space-around;
+	margin-right: 0;
 }
 
 #map{
-	margin: 0 auto;
-	width: 860px;
-	height: 500px;
+	width: 1753px;
+	height: 700px;
 }
 
 #stationAddress{
-	width: 300px;
+	width: 400px;
 }
 
-#bicycle{
-	position: absolute;
-	width: 30px;
-	height: 40px;
+.nav_hr{
+	margin-bottom: 0;	
+}
+
+.footer_hr{
+	margin-top: 0;
+}
+
+.body{
+	display: flex;
+}
+
+.aside{
+	padding-top: 15px;
+	width: 150px;
+	height: 700px;
+	background-color: white;
+	border-style: solid;
+	border: thin;
+	border-color: gray;
+	border-left-style: solid;
+	border-left-width: thin;
+	border-left-color: gray;
+	border-right-style: solid;
+	border-right-width: thin;
+	border-right-color: gray;
 	
 }
 
+.aside_title{
+	text-align: center;
+}
+
+.item_list{
+	border-top: thin;
+	border-top-style: solid;
+	border-color: gray;
+	padding-left: 0px	
+}
+
+.traffic_content{
+	width:150px;
+}
+
+.aside_item{
+	width: 150px;
+	list-style: none;
+	text-align: center;
+	margin-top: 5px;
+}
+
+.aside_profile.box{
+	width: 100px;
+	height: 100px;
+	border-radius: 70%;
+	overflow: hidden;
+	border-style: solid;
+	border-width: thin;
+	border-color: gray;
+	margin: auto;
+	margin-top: 1rem;
+	margin-bottom: 1rem;
+}
+
+.aside_profile{
+	width: 120px;
+	height: 120px;
+	object-fit: contain;
+}
+
+.aside_img{
+	display: block;
+	margin: auto;
+	width: 45px;
+	height: 45px;
+	object-fit: contain;	
+}
+
+.aside_bikerayer{
+	border: 0;
+	outline: 0;	
+	background-color: white;
+}
+
+.aside_text{
+	display: bolock;
+	margin-top: 3px;
+}
+
+/* #bike_rayer{
+	width: 100px;
+	height: 40px;
+	
+} */
+
 .input_serch{
 	display: flex;
-	align-content: inherit;
+}
+.serch_btn{
+	border-width: 2px
 }
 
 .media{
@@ -40,10 +129,11 @@ iframe{
 	height: 500px;
 }
 
-.title{
+.traffic_title{
 	display: flex;
 	align-content: center;
 	justify-content: center;
+	color: black;
 }
 
 .markers {
@@ -60,4 +150,29 @@ iframe{
     text-align: center;
     
     font: 15px Arial, sans-serif;
+}
+
+.favorite {
+	border-radius: 50%;
+	width: 30px;
+    height: 30px;
+    border: 1px solid aqua;
+    background-color: green;
+    text-align: center;
+}
+
+.favorite_marker {
+	width: 30px;
+	height: 30px;
+	margin: auto;
+}
+
+.addFavorite{
+	border: none;
+	background-color: white;
+}
+
+.info_favorite{
+	height: 25px;
+	width: 25px;
 }

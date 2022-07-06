@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import com.spring.myapp.dto.BikeStation;
+import com.spring.myapp.dto.FavoriteBikeStation;
 import com.spring.myapp.dto.RealTimeStationInfo;
 
 @Repository
@@ -45,6 +46,14 @@ public class BikeRepositoryImple implements BikeRepository {
 		return sqlSession.selectList("com.spring.myapp.BikeMapper.autocomplete", value);
 	}
 
-	
+	@Override
+	public List<FavoriteBikeStation> selectFavoriteList(String email) {
+		return sqlSession.selectList("com.spring.myapp.BikeMapper.selectFavoriteList", email);
+	}
+
+	@Override
+	public int insertFavorite(FavoriteBikeStation favoriteBikeStation) {
+		return sqlSession.insert("com.spring.myapp.BikeMapper.FavoriteBikeStation", favoriteBikeStation);
+	}
 
 }

@@ -21,6 +21,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.spring.myapp.dto.BikeStation;
+import com.spring.myapp.dto.FavoriteBikeStation;
 import com.spring.myapp.dto.RealTimeStationInfo;
 import com.spring.myapp.repository.BikeRepository;
 
@@ -40,7 +41,7 @@ public class BikeServiceImple implements BikeService{
 	}
 	
 	//api조회후 대여소 정보 DB update(스케쥴러이용 30분마다 업데이트)
-	//@Scheduled(cron = "0 0/30 * * * ?")
+	//@Scheduled(cron = "0 0/10 * * * ?")
 	@Transactional
 	public void updateStationInfo() throws IOException, ParseException {
 		//데이터 약2900개 한번에 호출할 수 있는 데이터 1000개 이므로 반복문 사용
@@ -114,6 +115,17 @@ public class BikeServiceImple implements BikeService{
 	@Override
 	public List<BikeStation> autocomplete(String value){
 		return bikeRepository.autocomplete(value);
+	}
+
+	@Override
+	public List<FavoriteBikeStation> FavoriteList(String email) {
+		List<FavoriteBikeStation> flist = bikeRepository.selectFavoriteList(email);
+		return flist;
+	}
+	
+	@Override
+	public int insertFavorite(FavoriteBikeStation favoriteBikeStation) {
+		return bikeRepository.insertFavorite(favoriteBikeStation);
 	}
 }
 

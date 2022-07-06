@@ -17,6 +17,7 @@
 		<typeAlias type="com.spring.myapp.dto.BoardFile" alias="BoardFile"/>
 		<typeAlias type="com.spring.myapp.dto.Tourism" alias="Tourism"/>
 		<typeAlias type="com.spring.myapp.dto.Accident" alias="Accident"/>
+		<typeAlias type="com.spring.myapp.dto.FavoriteBikeStation" alias="FavoriteBikeStation"/>
 	</typeAliases>
 </configuration>  
 
