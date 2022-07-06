@@ -10,6 +10,7 @@
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 <link rel="shortcut icon" href="data:image/x-icon;," type="image/x-icon">
 <link rel="icon" href="/favicon.ico" type="image/x-icon">
+<link rel="stylesheet" href="${path}/resources/css/weather.css">
 </head>
 <body>
 <%@include file="../header.jsp"%>

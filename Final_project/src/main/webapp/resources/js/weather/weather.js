@@ -21,19 +21,19 @@ function weather(region){
 			if(rainState!='0') {
 				switch(rainState) {
 					case "1":
-						$('.weather-state-text').html("비");
+						$('.weather-state-text').html("☔비");
 						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 					case "2":
-						$('.weather-state-text').html("비/눈");
+						$('.weather-state-text').html("🌨비/눈");
 						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 					case "3":
-						$('.weather-state-text').html("눈");
+						$('.weather-state-text').html("☃눈");
 						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 					case "4":
-						$('.weather-state-text').html("소나기");
+						$('.weather-state-text').html("☔소나기");
 						$('#RN1').html("시간당강수량 : "+ rain);
 						break;
 				}
@@ -41,16 +41,16 @@ function weather(region){
 				$('#RN1').html("강수없음");
 				switch(sky) {
 					case "1":
-						$('.weather-state-text').html("맑음");
+						$('.weather-state-text').html("☀맑음");
 						break;
 					case "2":
-						$('.weather-state-text').html("구름조금");
+						$('.weather-state-text').html("🌤구름조금");
 						break;
 					case "3":
-						$('.weather-state-text').html("구름많음");
+						$('.weather-state-text').html("⛅구름많음");
 						break;
 					case "4":
-						$('.weather-state-text').html("흐림");    
+						$('.weather-state-text').html("☁흐림");    
 						break;
            		}    
        		}					

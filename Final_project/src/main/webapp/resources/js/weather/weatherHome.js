@@ -11,31 +11,31 @@ window.addEventListener('load',()=>{
 			if(rainState!='0') {
 				switch(rainState) {
 					case "1":
-						$('.weather-text').html("비 "+tempNow+"℃");
+						$('.weather-text').html("☔비 "+tempNow+"℃");
 						break;
 					case "2":
-						$('.weather-text').html("비/눈 "+tempNow+"℃");
+						$('.weather-text').html("🌨비/눈 "+tempNow+"℃");
 						break;
 					case "3":
-						$('.weather-text').html("눈 "+tempNow+"℃");
+						$('.weather-text').html("☃눈 "+tempNow+"℃");
 						break;
 					case "4":
-						$('.weather-text').html("소나기 "+tempNow+"℃");
+						$('.weather-text').html("☔소나기 "+tempNow+"℃");
 						break;
 				}
 			}else {
 				switch(sky) {
 					case "1":
-						$('.weather-text').html("맑음 "+tempNow+"℃");
+						$('.weather-text').html("☀맑음 "+tempNow+"℃");
 						break;
 					case "2":
-						$('.weather-text').html("구름조금 "+tempNow+"℃");
+						$('.weather-text').html("🌤구름조금 "+tempNow+"℃");
 						break;
 					case "3":
-						$('.weather-text').html("구름많음 "+tempNow+"℃");
+						$('.weather-text').html("⛅구름많음 "+tempNow+"℃");
 						break;
 					case "4":
-						$('.weather-text').html("흐림 "+tempNow+"℃");    
+						$('.weather-text').html("☁흐림 "+tempNow+"℃");    
 						break;
            		}    
        		}					

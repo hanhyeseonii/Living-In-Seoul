@@ -51,4 +51,14 @@
 		limit 10
 	</select>
 	
+	<insert id="insertFavorite">
+		insert into favoriteBikeStation (email, stationId, stationLatitude, stationLongitude)
+		values (#{email}, #{stationId}, #{stationLatitude}, #{stationLongitude})
+	</insert>
+	
+	<select id="selectFavoriteList" resultType="FavoriteBikeStation">
+		select * from favoriteBikeStation
+		where email = #{email}
+	</select>
+	
 </mapper>

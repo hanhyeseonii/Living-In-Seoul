@@ -10,19 +10,6 @@
 <script type="text/javascript" src="${path}/resources/js/accident/accidentHome.js"></script>
 <script type="text/javascript" src="${path}/resources/js/weather/weatherHome.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
-<script type="text/javascript">
-$(function(){
-    $('.bxslider').bxSlider({
-        auto: true,
-        autoControls: true,
-        stopAutoOnClick: true,
-        pager: true,
-        slideWidth: 600,
-        slidemargin: 20
-    });
-
-});
-</script>
 </head>
 <body>
 	<%@ include file="./header.jsp"%>
@@ -33,12 +20,12 @@ $(function(){
 			<div class="title" id="title">𝙇𝙞𝙫𝙞𝙣𝙜 𝙄𝙣 𝙎𝙚𝙤𝙪𝙡</div>
 		</div>
 		<hr>
-		<div class="weatherCovid">
+		<div class="banner">
 			[날씨] 서울시&nbsp;<div class="weather-text"></div>
-				│[코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
-				사망자 수&nbsp;<div class="death-cnt"></div>
+			│[코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
+			&nbsp;사망자 수&nbsp;<div class="death-cnt"></div>
 		</div>
-		<div class="weatherCovid"><h5 style="font-weight: bold;">돌발 정보</h5>&nbsp;<div style="text-decoration: underline;" class="accident-text"></div></div>
+		<div class="banner"><h5 style="font-weight: bold;">돌발 정보</h5>&nbsp;<div style="text-decoration: underline;" class="accident-text"></div></div>
 		<hr>
 		<div class="menu">
 			<div class="menuCard">
