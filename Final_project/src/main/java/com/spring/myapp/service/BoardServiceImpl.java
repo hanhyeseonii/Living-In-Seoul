@@ -138,7 +138,15 @@ public class BoardServiceImpl implements BoardService {
 		
 	}
 	
+	@Override
+	public List<Board> selectNew(){
+		return boardRepository.selectNew();
+	}
 	
+	@Override
+	public List<Board> selectHot(){
+		return boardRepository.selectHot();
+	}
 	
 	
 

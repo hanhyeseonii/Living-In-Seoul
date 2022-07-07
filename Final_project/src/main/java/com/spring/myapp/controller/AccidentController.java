@@ -25,7 +25,11 @@ public class AccidentController {
 	@ResponseBody
 	@GetMapping(value="wizet", produces = "application/text; charset=utf8")
 	public String wizet() {
-		return as.selectOne().getAccInfo();
+		String result="";
+		if(as.selectOne()!=null) {
+			result=as.selectOne().getAccInfo();
+		}
+		return result;
 	}
 	
 	

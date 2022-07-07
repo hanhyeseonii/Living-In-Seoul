@@ -5,13 +5,13 @@
   
 <mapper namespace="com.spring.myapp.BoardMapper">
 	<insert id="insert" parameterType="Board">
-		<!--  insert문 전에 select문을 실행해서 Board의 bnum필드에 set해라 
+		
 		<selectKey keyProperty="bnum" resultType="int" order="BEFORE">
-			SELECT b_seq.nextval FROM dual
-		</selectKey> -->
+			SELECT get_seq('ID_SEQ')
+		</selectKey>
 	
 		INSERT INTO board(bnum,email,subject,content,ip)
-		VALUES (bnum,#{email}, #{subject}, #{content}, #{ip})
+		VALUES (#{bnum},#{email}, #{subject}, #{content}, #{ip})
 	</insert>
 	<update id="update">
 		UPDATE board
@@ -94,6 +94,17 @@
 	
 	</update>
 	
+	<select id="selectNew" resultType="Board">
+		select * from board
+		order by regidate desc
+		limit 3
+	</select>
+	
+	<select id="selectHot" resultType="Board">
+		select * from board
+		order by likecnt desc
+		limit 3
+	</select>
 	
 	
 	

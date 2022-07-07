@@ -3,7 +3,8 @@
 header{
 	display: flex;
 	align-content: right;
-	justify-content: space-around;
+	justify-content: space-between;
+
 }
 
 nav{
@@ -71,7 +72,68 @@ nav{
 	margin-bottom: 50px;
 }
 
+a.menubar{
+	padding-left: 5px;
+	padding-right: 5px;
+}
+
 .banner{
 	display: flex;
 	justify-content: center;
+}
+
+.button {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button_gr {
+  background-color: #008CBA; /* Green */
+  border: none;
+  color: white;
+  padding: 3px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 15px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+.button {
+  background-color: #008CBA; 
+  color: white; 
+  border: 2px solid #008CBA;
+}
+
+.button:hover {
+  background-color: white;
+  color: black;
+}
+
+.button_gr {
+  background-color: #e7e7e7;
+  color: black;
+  border: 2px solid #e7e7e7;
+}
+
+.button_gr:hover {background-color: white;}
+
+.login{
+	transform:scale(1.5);
+}
+
+.cultureStyle{
+	position: absolute;
+	left: 10%;
 }

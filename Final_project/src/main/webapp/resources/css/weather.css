@@ -10,14 +10,13 @@
 	font-size:14px;
 }
 
-.weather_box:hover{
-	opacity : 0.7;
+
+.weather_text:hover{
+	color: black;
+	background-color: lightgreen;
 }
 
 
-.weather_box:hover .text{
-	visibility:visible;
-}
 
 #jonglo{
 	top:240px; 

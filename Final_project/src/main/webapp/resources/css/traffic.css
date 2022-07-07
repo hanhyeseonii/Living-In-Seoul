@@ -9,6 +9,7 @@
 #map{
 	width: 1753px;
 	height: 700px;
+	
 }
 
 #stationAddress{
@@ -30,7 +31,7 @@
 .aside{
 	padding-top: 15px;
 	width: 150px;
-	height: 700px;
+	height: 715px;
 	background-color: white;
 	border-style: solid;
 	border: thin;
@@ -46,6 +47,7 @@
 
 .aside_title{
 	text-align: center;
+	font-weight: bold;
 }
 
 .item_list{
@@ -56,6 +58,7 @@
 }
 
 .traffic_content{
+	text-align: center;
 	width:150px;
 }
 
@@ -67,21 +70,15 @@
 }
 
 .aside_profile.box{
-	width: 100px;
-	height: 100px;
-	border-radius: 70%;
+	width: 150px;
+	height: 150px;
 	overflow: hidden;
-	border-style: solid;
-	border-width: thin;
-	border-color: gray;
 	margin: auto;
-	margin-top: 1rem;
-	margin-bottom: 1rem;
 }
 
 .aside_profile{
-	width: 120px;
-	height: 120px;
+	width: 145px;
+	height: 145px;
 	object-fit: contain;
 }
 
@@ -130,6 +127,7 @@ iframe{
 }
 
 .traffic_title{
+	
 	display: flex;
 	align-content: center;
 	justify-content: center;
@@ -175,4 +173,29 @@ iframe{
 .info_favorite{
 	height: 25px;
 	width: 25px;
+}
+
+.favoriteList{
+	width: 150px;
+	display: none;
+	border-right: thin;
+	border-right-style: solid;
+}
+
+.favoriteList_ul{
+	padding: 0;
+	width: 150px;
+	list-style: none;
+	text-align: center;
+}
+
+.favorite_item{
+	border: none;
+	background-color: white;
+	
+}
+
+.favoriteList_title{
+	text-align: center;	
+	margin-top: 10px;
 }

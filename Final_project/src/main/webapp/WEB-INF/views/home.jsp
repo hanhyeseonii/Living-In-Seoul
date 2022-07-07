@@ -9,6 +9,7 @@
 <script type="text/javascript" src="${path}/resources/js/accident/covid.js"></script>
 <script type="text/javascript" src="${path}/resources/js/accident/accidentHome.js"></script>
 <script type="text/javascript" src="${path}/resources/js/weather/weatherHome.js"></script>
+<script type="text/javascript" src="${path}/resources/js/boardHome.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
 </head>
 <body>
@@ -22,14 +23,14 @@
 		<hr>
 		<div class="banner">
 			[날씨] 서울시&nbsp;<div class="weather-text"></div>
-			│[코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
+			&nbsp;│ [코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
 			&nbsp;사망자 수&nbsp;<div class="death-cnt"></div>
 		</div>
-		<div class="banner"><h5 style="font-weight: bold;">돌발 정보</h5>&nbsp;<div style="text-decoration: underline;" class="accident-text"></div></div>
+		<div class="banner"><h5 style="font-weight: bold;">돌발 정보!&nbsp;</h5><div style="text-decoration: underline;" class="accident-text"></div></div>
 		<hr>
 		<div class="menu">
 			<div class="menuCard">
-				<a href="${path}/culture/tourism/"><img alt="" src="${path}/resources/images/hanRiver.jpg"  width='350px' height='250px'></a>
+				<a href="${path}/culture/tourism/list"><img alt="" src="${path}/resources/images/hanRiver.jpg"  width='350px' height='250px'></a>
 			</div>
 			<div class="menuCard">
 				<a href="${path}/culture/board/"><img alt="" src="${path}/resources/images/food.jpg"  width='350px' height='250px'></a>
@@ -41,15 +42,15 @@
 		<div style="display: flex;">
 			<div style="margin-left: 140px;">
 				인기 게시물<br>
-				게시글1<br>
-				게시글2<br>
-				게시글3<br>
+				<a href="" class="hot-first"></a><br>
+				<a href="" class="hot-second"></a><br>
+				<a href="" class="hot-third"></a><br>
 			</div>
 			<div style="margin-left: 600px">
 				최근 게시물<br>
-				게시글1<br>
-				게시글2<br>
-				게시글3<br>
+				<a href="${path}/culture/board/detail?bnum=${bnum}" class="new-first"></a><br>
+				<a href="" class="new-second"></a><br>
+				<a href="" class="new-third"></a><br>
 			</div>
 		</div>
 	</div>

@@ -21,4 +21,7 @@ public interface BoardService {
 	int updateLikeCnt(int bnum);
 	//싫어요+1
 	int updateDisLikeCnt(int bnum);
+	
+	List<Board> selectNew();
+	List<Board> selectHot();
 }

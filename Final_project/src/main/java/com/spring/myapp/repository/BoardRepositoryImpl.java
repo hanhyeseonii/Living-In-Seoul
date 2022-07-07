@@ -6,6 +6,7 @@ import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import com.spring.myapp.dto.Accident;
 import com.spring.myapp.dto.Board;
 import com.spring.myapp.dto.Page;
 
@@ -72,6 +73,16 @@ public class BoardRepositoryImpl implements BoardRepository{
 	public int updateDisLikeCnt(int bnum) {
 		// TODO Auto-generated method stub
 		return sqlSession.update("com.spring.myapp.BoardMapper.updateDisLikeCnt", bnum);
+	}
+	
+	@Override
+	public List<Board> selectNew() {		
+		return sqlSession.selectList("com.spring.myapp.BoardMapper.selectNew");
+	}
+	
+	@Override
+	public List<Board> selectHot() {		
+		return sqlSession.selectList("com.spring.myapp.BoardMapper.selectHot");
 	}
 
 }

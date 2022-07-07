@@ -22,7 +22,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button>회원탈퇴</button>
+					<button class="button">회원탈퇴</button>
 				</td>
 			</tr>
 		</table>

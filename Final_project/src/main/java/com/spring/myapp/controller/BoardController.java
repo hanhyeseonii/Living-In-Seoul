@@ -1,6 +1,8 @@
 package com.spring.myapp.controller;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -80,7 +82,7 @@ public class BoardController {
 	
 	//추가
 	@PostMapping("add")
-	public String add(Board board, HttpServletRequest request, RedirectAttributes rattr) throws Exception {
+	public String add( Board board, HttpServletRequest request, RedirectAttributes rattr) throws Exception {
 		//클라이언트 ip
 		board.setIp(request.getRemoteAddr());
 		ErrorCode1 errorCode =  boardService.insert(board);
@@ -160,10 +162,18 @@ public class BoardController {
 	
 	
 	
+	@ResponseBody
+	@GetMapping("hotBoard")
+	public List<Board> hotBoard(){
+		return boardService.selectHot();
+	}
 	
-	
-	
-	
+
+	@ResponseBody
+	@GetMapping("newBoard")
+	public List<Board> newBoard(){
+		return boardService.selectNew();
+	}
 	
 	
 	

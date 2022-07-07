@@ -18,12 +18,12 @@
 				<td>
 				<input type="password" name="passwd" id="passwd" placeholder="새비밀번호" /><br>
 				<input type="password" name="againpasswd" id="againpasswd" onchange="savePasswdmd(event)" placeholder="비밀번호확인" />
-				<button type="button" onclick="savePasswdmd(event)">일치확인</button>
+				<button type="button" onclick="savePasswdmd(event)" class="button_gr">일치확인</button>
 				</td>
 			</tr>
 			<tr>
 				<td align="center">
-				<button id="savebtn">SAVE</button>
+				<button id="savebtn" class="button">SAVE</button>
 				</td>
 			</tr>
 		</table>

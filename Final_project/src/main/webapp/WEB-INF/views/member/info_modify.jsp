@@ -31,7 +31,7 @@
 			</tr>
 			<tr>
 				<td>
-				<button type="button" onclick="modifyCheck(event)">SAVE</button>
+				<button type="button" onclick="modifyCheck(event)" class="button">SAVE</button>
 				</td>
 			</tr>
 		</table>

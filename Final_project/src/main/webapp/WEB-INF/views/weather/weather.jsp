@@ -16,11 +16,7 @@
 <%@include file="../header.jsp"%>
 	<h2 style="text-align: center;">자치구별 날씨</h2>
 	<br>
-	<table border="1" style="margin-left:auto; margin-right:auto;">
-		<tr>
-			<th></th>
-			<th>날씨 정보</th>
-		</tr>
+	<table style="margin-left:auto; margin-right:auto;">
 		<tr>
 			<th>
 				<div class="weather_box">
@@ -52,10 +48,8 @@
 					<div class="weather_text" id="gangdong">강동구</div>
 					
 				</div>
-				
-				
-
 			</th>
+			<th width=50></th>
 			<th width="300"> 
 				<div id="weatherDetail">
 					<h2 class="weather-region"></h2><br>

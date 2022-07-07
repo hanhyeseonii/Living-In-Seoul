@@ -26,7 +26,7 @@
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button>find</button>
+					<button class="button">find</button>
 				</td>
 			</tr>
 		</table>

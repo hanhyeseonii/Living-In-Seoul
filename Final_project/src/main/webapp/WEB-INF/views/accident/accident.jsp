@@ -21,7 +21,7 @@
 			<tr>
 				<th>${accidentList.accId}</th>
 				<th>${accidentList.accInfo}</th>
-				<th>${accidentList.regidate}</th>
+				<th><fmt:formatDate value="${accidentList.regidate}" pattern="yyyy-MM-dd HH:mm:ss"/> </th>
 			</tr>
 		</c:forEach>
 	</table>

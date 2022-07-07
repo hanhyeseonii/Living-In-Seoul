@@ -194,7 +194,12 @@ $(()=>{
 		
 		var stationId = $('.addFavorite').val();
 		console.log(stationId);
-	})
+	});
+	
+	$('#favoriteList_ul').on('click', '.favorite_item', (e)=>{
+		var position = e.target.value.split(',');
+		map.setCenter(new naver.maps.LatLng(position[0], position[1]));
+	});
 	
 	//즐겨찾기리스트 가져오기
 	function favoriteList(){
@@ -205,8 +210,9 @@ $(()=>{
 				data: {"email":sessionEmail},
                 dataType: "json",
 				success: function(json){
-					for(key in json){
-						var position = new naver.maps.LatLng( json[key].stationLatitude, json[key].stationLongitude);	
+					
+					for(var i =0;i<json.length;i++){
+						var position = new naver.maps.LatLng( json[i].stationLatitude, json[i].stationLongitude);	
 						var marker = new naver.maps.Marker({
 					        map: map,
 					        position: position,
@@ -217,7 +223,11 @@ $(()=>{
 						        size: new naver.maps.Size(10, 10),
 						    },
 					    });
-						favoritMaker.push(marker)
+						favoritMaker.push(marker);
+						var x = json[i].stationLatitude;
+						var y = json[i].stationLongitude;
+						
+						$('#favoriteList_ul').append(`<li><button class="favorite_item" value="${x},${y}">${json[i].stationId}</button></li>`);
 					}
 				},
 				error : ()=>{
@@ -236,5 +246,9 @@ $(()=>{
 	$('#aside_favorite').click((e)=>{
 		e.preventDefault();
 		
+		var favoriteList = $('#favoriteList');
+		favoriteList.toggle();
 	});
+	
+	
 });

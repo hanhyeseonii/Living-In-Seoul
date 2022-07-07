@@ -17,7 +17,7 @@
 				<th>email</th>
 				<td>
 				<input type="email" name="email" id="email" placeholder="이메일" />
-				<button type="button" onclick="duplCheck(event,'${path}')">중복확인</button>
+				<button type="button" onclick="duplCheck(event,'${path}')" class="button_gr">중복확인</button>
 				</td>
 			</tr>
 			<tr>
@@ -29,7 +29,7 @@
 				<td>
 				<input type="password" name="passwd" id="passwd" placeholder="비밀번호" /><br>
 				<input type="password" name="againpasswd" id="againpasswd" placeholder="비밀번호확인" />
-				<button type="button" onclick="passwdCheck(event)">일치확인</button>
+				<button type="button" onclick="passwdCheck(event)" class="button_gr">일치확인</button>
 				</td>
 			</tr>
 			<tr>
@@ -38,11 +38,11 @@
 			</tr>
 			<tr>
 				<th>address</th>
-				<td><input type="text" name="address" id="address" placeholder="주소" /></td>
+				<td><input type="text" name="address" id="address" placeholder="예시) 서울시 구로구" /></td>
 			</tr>
 			<tr>
 				<td colspan="2" align="center">
-					<button onclick="loginCheck(event)">sign up</button>
+					<button onclick="loginCheck(event)" class="button">sign up</button>
 				</td>
 			</tr>
 		</table>

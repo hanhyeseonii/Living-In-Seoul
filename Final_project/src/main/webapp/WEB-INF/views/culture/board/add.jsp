@@ -9,15 +9,17 @@
 <script type="text/javascript" src="${path}/resources/js/culture/fileAdd.js"></script>
 </head>
 <body>
-<div class="container">
-	<%@ include file="../header2.jsp" %>
-	
-	<h2>맛집 글쓰기</h2>
-	<form action="${path}/culture/board/add" method="post" enctype="multipart/form-data">
+	<%@ include file="../../header.jsp" %>
+	<div class="cultureStyle">
+		<h5>맛집 - 공유할 맛집 정보 글을 올려주세요</h5>
+		<br>
+		<h2>맛집 글쓰기</h2>
+		<form action="${path}/culture/board/add" method="post" enctype="multipart/form-data">
 		<table border="1">
 			<tr>
-				<th>이메일</th>
-				<td><input type="text" name="email"> </td>
+				<th>작성자</th>
+				<td>${sessionScope.email}</td>
+				<td><input type="hidden" name="email" value="${sessionScope.email}" ></td>
 			</tr>
 			<tr>
 				<th>제목</th>
@@ -47,6 +49,6 @@
 		</table>
 	
 	</form>
-</div>
+	</div>
 </body>
 </html>

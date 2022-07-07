@@ -28,7 +28,7 @@
 			<h6 class="aside_title">따릉이 대여소</h6>
 			<div class="traffic_content">
 				<div class="aside_profile box">
-					<img alt="프로필 사진" class="aside_profile" src="${path}/resources/images/profile.png">
+					<img alt="프로필 사진" class="aside_profile" src="${path}/resources/images/seoulicon.jpg">
 				</div>
 				<ul class="item_list">
 					<li class="aside_item">
@@ -54,14 +54,17 @@
 				</ul>
 			</div>
 		</aside>
-		
+		<div class="favoriteList" id="favoriteList">
+			<h6 class="favoriteList_title">즐겨찾는 장소</h6>
+			<ul class="favoriteList_ul" id="favoriteList_ul"></ul>
+		</div>
 		<main>
 			<!-- <h2 class="traffic_title">따릉이 대여소</h2> -->
 			<input type="hidden" id="contextPath" value="${path}">
 			<input type="hidden" id="stationId" value="ST-976">
-			${favoriteList}
 			<p>
-			<div id="map"></div>
+			<div id="map">
+			</div>
 		</main>
 	</div>
 	<%@ include file="../footer.jsp" %>

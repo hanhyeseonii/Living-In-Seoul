@@ -24,6 +24,8 @@ public interface BoardRepository {
 	//삭제여부변경
 	int updateRemoveyn(int bnum);
 	
+	List<Board> selectNew();
 	
+	List<Board> selectHot();
 	
 }
