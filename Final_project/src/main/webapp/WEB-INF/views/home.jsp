@@ -48,7 +48,7 @@
 			</div>
 			<div style="margin-left: 600px">
 				최근 게시물<br>
-				<a href="${path}/culture/board/detail?bnum=${bnum}" class="new-first"></a><br>
+				<a href="" class="new-first"></a><br>
 				<a href="" class="new-second"></a><br>
 				<a href="" class="new-third"></a><br>
 			</div>
