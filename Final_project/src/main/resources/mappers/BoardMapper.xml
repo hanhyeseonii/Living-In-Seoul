@@ -44,6 +44,7 @@
 		where removeyn = 'n'
 			<include refid="find"/>
 		order by bnum desc
+		limit #{startNum} , #{perPage}
 	</select>
 	
 	<!-- 전체게시물수 구하기 -->
@@ -56,17 +57,17 @@
 	<!-- 조회조건 sql문 -->
 	<sql id="find">
 		<if test="findkey =='email'">
-			AND email LIKE '%' || #{findvalue} || '%'
+			AND email LIKE  concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey =='subject'">
-			AND subject LIKE '%' || #{findvalue} || '%'
+			AND subject LIKE  concat('%' , #{findvalue} , '%')
 		</if>
-		<if test="findkey =='content'">
-			AND content LIKE '%' || #{findvalue} || '%'
+		<if test="findkey =='bnum'">
+			AND bnum LIKE  concat('%' , #{findvalue} , '%')
 		</if>		
 		<if test="findkey=='subcon'">
-			AND (subject LIKE '%' || #{findvalue} ||'%'
-			   OR content LIKE '%' || #{findvalue} ||'%')
+			AND (subject LIKE concat('%' , #{findvalue} , '%')
+			   OR content LIKE concat('%' , #{findvalue} , '%'))
 		</if>	
 	
 	</sql>

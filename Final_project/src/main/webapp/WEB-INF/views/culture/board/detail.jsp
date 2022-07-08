@@ -59,14 +59,16 @@
 			<tr>
 				<th>파일</th>
 				<td>
-					<c:forEach var="boardFile" items="${bflist}">
-						${boardFile.filename} <br>
-					</c:forEach>
+					<div class="bxslider">
+						<c:forEach var="boardFile" items="${bflist}">
+							<div><img src="${path}/resources/images/culture/${boardFile.filename}"></div>
+						</c:forEach>
+					</div>
 				</td>
 			</tr>
 			<tr>
 				<th>내용</th>
-				<td>${board.content}</td>
+				<td id="email">${board.content}</td>
 			</tr>
 			<tr>
 				<th>조회수</th>
@@ -104,7 +106,7 @@
 				    <li class="list-group-item">
 					<div class="form-inline mb-2">
 						<label for="replyemail"><i class="fas fa-envelope"></i></label>
-						<input type="email" class="form-control ml-2" id="replyemail" value="${sessionScope.email}" readonly>
+						<input type="hidden" class="form-control ml-2" id="replyemail" value="${sessionScope.email}" readonly>${sessionScope.email}
 					</div>
 					<textarea class="form-control" id="replycontent" rows="3"></textarea>
 					<button type="button" class="btn btn-dark mt-3" id="replyAdd">추가</button>

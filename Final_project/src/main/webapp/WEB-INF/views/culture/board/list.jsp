@@ -55,7 +55,7 @@
 			<select name="findkey">
 				<option value="bnum" <c:out value="${page.findkey=='bnum'?'selected':''}"/>>번호</option>
 				<option value="subject" <c:out value="${page.findkey=='subject'?'selected':''}"/>>제목</option>
-				<option value="name" <c:out value="${page.findkey=='name'?'selected':''}"/>>이름</option>
+				<option value="email" <c:out value="${page.findkey=='email'?'selected':''}"/>>작성자</option>
 			</select>
 			<input type="text" name="findvalue" value="${page.findvalue}">
 			<button class="button_gr">조회</button>

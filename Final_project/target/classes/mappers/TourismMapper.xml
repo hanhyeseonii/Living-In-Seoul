@@ -21,13 +21,13 @@
 	<!-- 조회조건 sql문 -->
 	<sql id="find">
 		<if test="findkey =='tnum'">
-			where tnum LIKE '%' || #{findvalue} || '%'
+			where tnum LIKE concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey =='tname'">
-			where tname LIKE '%' || #{findvalue} || '%'
+			where tname LIKE concat('%' , #{findvalue} , '%')
 		</if>
 		<if test="findkey =='taddress'">
-			where taddress LIKE '%' || #{findvalue} || '%'
+			where taddress LIKE concat('%' , #{findvalue} , '%')
 		</if>
 				
 	</sql>

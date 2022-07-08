@@ -145,7 +145,7 @@ window.addEventListener('load', ()=>{
 	document.getElementById('replyAdd').addEventListener('click',()=>{
 		//추가할 내용 읽어오기
 		const bnum = document.getElementById('bnum').innerText;
-		const email = document.getElementById('replyemail').value;
+		const email = document.getElementById('replyemail').innerText;
 		const content = document.getElementById('replycontent').value;
 		const restep = document.getElementById('restep').value; // 댓글의 순서
 		const relevel = document.getElementById('relevel').value; // 댓글의 레벨
