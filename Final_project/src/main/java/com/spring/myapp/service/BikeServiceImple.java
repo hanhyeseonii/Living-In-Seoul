@@ -127,5 +127,15 @@ public class BikeServiceImple implements BikeService{
 	public int insertFavorite(FavoriteBikeStation favoriteBikeStation) {
 		return bikeRepository.insertFavorite(favoriteBikeStation);
 	}
+
+	@Override
+	public RealTimeStationInfo selectROne(String stationId) {
+		return bikeRepository.selectRealTimeStationInfo(stationId);
+	}
+
+	@Override
+	public FavoriteBikeStation selectFavorite(String stationId) {
+		return bikeRepository.selectFavorite(stationId);
+	}
 }
 

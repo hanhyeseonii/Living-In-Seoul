@@ -9,7 +9,7 @@
 #map{
 	width: 1753px;
 	height: 700px;
-	
+	margin: auto;
 }
 
 #stationAddress{
@@ -33,16 +33,15 @@
 	width: 150px;
 	height: 715px;
 	background-color: white;
-	border-style: solid;
-	border: thin;
-	border-color: gray;
 	border-left-style: solid;
 	border-left-width: thin;
 	border-left-color: gray;
 	border-right-style: solid;
 	border-right-width: thin;
 	border-right-color: gray;
-	
+	border-top-style: solid;
+	border-top-width: thin;
+	border-top-color: gray;
 }
 
 .aside_title{
@@ -101,12 +100,6 @@
 	margin-top: 3px;
 }
 
-/* #bike_rayer{
-	width: 100px;
-	height: 40px;
-	
-} */
-
 .input_serch{
 	display: flex;
 }
@@ -127,11 +120,10 @@ iframe{
 }
 
 .traffic_title{
-	
 	display: flex;
-	align-content: center;
 	justify-content: center;
 	color: black;
+	margin-top: 1rem;
 }
 
 .markers {
@@ -143,7 +135,7 @@ iframe{
     padding: 5px;
     
     background: green;
-    border: 2px solid aqua;
+    border: 2px solid #4dd0e1;
     color: white;
     text-align: center;
     
@@ -154,19 +146,21 @@ iframe{
 	border-radius: 50%;
 	width: 30px;
     height: 30px;
-    border: 1px solid aqua;
+    border: 2px solid #4dd0e1;
     background-color: green;
     text-align: center;
 }
 
 .favorite_marker {
-	width: 30px;
-	height: 30px;
+	width: 26px;
+	height: 26px;
 	margin: auto;
 }
 
 .addFavorite{
 	border: none;
+	width: 25px;
+	height: 25px;
 	background-color: white;
 }
 
@@ -178,8 +172,8 @@ iframe{
 .favoriteList{
 	width: 150px;
 	display: none;
-	border-right: thin;
-	border-right-style: solid;
+	border-right: solid thin gray;
+	border-top: solid thin gray;
 }
 
 .favoriteList_ul{
@@ -192,10 +186,17 @@ iframe{
 .favorite_item{
 	border: none;
 	background-color: white;
-	
+}
+
+.favorite_item:hover{
+	color: blue;
 }
 
 .favoriteList_title{
 	text-align: center;	
 	margin-top: 10px;
+	margin-bottom: 10px;
 }
+
+
+

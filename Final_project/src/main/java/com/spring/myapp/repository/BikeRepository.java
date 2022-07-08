@@ -15,4 +15,5 @@ public interface BikeRepository {
 	RealTimeStationInfo selectRealTimeStationInfo(String stationId);
 	List<FavoriteBikeStation> selectFavoriteList(String email);
 	int insertFavorite(FavoriteBikeStation favoriteBikeStation);
+	FavoriteBikeStation selectFavorite(String stationId);
 }

@@ -4,6 +4,7 @@
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.spring.myapp.BikeMapper">
 	
+	<!-- 실시간 대여소 정보 인서트 -->
 	<insert id="insert" parameterType="java.util.List">
 		insert into realTimeStationInfo(stationId, stationName, rackTotCnt, parkingBikeTotCnt,
 			shared, stationLatitude, stationLongitude)
@@ -14,6 +15,7 @@
  		</foreach>
 	</insert>
 	
+	<!-- 실시간 대여소 정보 업데이트 -->
 	<update id="update" parameterType="java.util.List">
 		<foreach collection="list" item="item" open="" close="" separator=";">
 			update realTimeStationInfo
@@ -27,6 +29,7 @@
 		</foreach>
 	</update>
 	
+	<!-- 검색위치 주변 2키로 대여소 조회 -->
 	<select id="selectList" resultType="RealTimeStationInfo">
 		select *, (6371*acos(cos(radians(#{stationLatitude}))*cos(radians(stationLatitude))*cos(radians(stationLongitude)
 			- radians(#{stationLongitude}))+sin(radians(#{stationLatitude}))*sin(radians(stationLatitude)))) as distance 
@@ -44,6 +47,7 @@
 		where stationId = #{stationId}
 	</select>
 	
+	<!-- 검색어 자동완성 조회 -->
 	<select id="autocomplete" resultType="BikeStation">
 		select * from bikeStation
 		where roadaddress like concat('%', #{value},'%')
@@ -52,8 +56,8 @@
 	</select>
 	
 	<insert id="insertFavorite">
-		insert into favoriteBikeStation (email, stationId, stationLatitude, stationLongitude)
-		values (#{email}, #{stationId}, #{stationLatitude}, #{stationLongitude})
+		insert into favoriteBikeStation (email, stationId, stationName, stationLatitude, stationLongitude)
+		values (#{email}, #{stationId}, #{stationName}, #{stationLatitude}, #{stationLongitude})
 	</insert>
 	
 	<select id="selectFavoriteList" resultType="FavoriteBikeStation">
@@ -61,4 +65,8 @@
 		where email = #{email}
 	</select>
 	
+	<select id="selectFavorite" resultType="FavoriteBikeStation">
+		select * from favoriteBikeStation
+		where stationId = #{stationId}
+	</select>
 </mapper>

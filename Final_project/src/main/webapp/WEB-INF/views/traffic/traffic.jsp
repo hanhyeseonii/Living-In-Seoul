@@ -14,10 +14,12 @@
 </head>
 <body>
 	<%@ include file="../header.jsp" %>
-	<h2 class="traffic_title">도로교통상황</h2>
 	<%@ include file="./trafficNav.jsp" %>
-	<div id="map">
-	</div>
+	<main>
+		<h2 class="traffic_title">도로교통상황</h2>
+		<div id="map">
+		</div>
+	</main>
 	<%@ include file="../footer.jsp" %>
 </body>
 </html>

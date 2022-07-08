@@ -53,7 +53,12 @@ public class BikeRepositoryImple implements BikeRepository {
 
 	@Override
 	public int insertFavorite(FavoriteBikeStation favoriteBikeStation) {
-		return sqlSession.insert("com.spring.myapp.BikeMapper.FavoriteBikeStation", favoriteBikeStation);
+		return sqlSession.insert("com.spring.myapp.BikeMapper.insertFavorite", favoriteBikeStation);
+	}
+
+	@Override
+	public FavoriteBikeStation selectFavorite(String stationId) {
+		return sqlSession.selectOne("com.spring.myapp.BikeMapper.selectFavorite", stationId);
 	}
 
 }

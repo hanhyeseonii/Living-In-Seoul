@@ -3,18 +3,21 @@ package com.spring.myapp.dto;
 public class FavoriteBikeStation {
 	private String email;
 	private String stationId;
+	private String stationName;
 	private String stationLatitude;
 	private String stationLongitude;
-	public FavoriteBikeStation(String email, String stationId, String stationLatitude, String stationLongitude) {
-		super();
-		this.email = email;
-		this.stationId = stationId;
-		this.stationLatitude = stationLatitude;
-		this.stationLongitude = stationLongitude;
-	}
 	public FavoriteBikeStation() {
 		super();
 		// TODO Auto-generated constructor stub
+	}
+	public FavoriteBikeStation(String email, String stationId, String stationName, String stationLatitude,
+			String stationLongitude) {
+		super();
+		this.email = email;
+		this.stationId = stationId;
+		this.stationName = stationName;
+		this.stationLatitude = stationLatitude;
+		this.stationLongitude = stationLongitude;
 	}
 	public String getEmail() {
 		return email;
@@ -27,6 +30,12 @@ public class FavoriteBikeStation {
 	}
 	public void setStationId(String stationId) {
 		this.stationId = stationId;
+	}
+	public String getStationName() {
+		return stationName;
+	}
+	public void setStationName(String stationName) {
+		this.stationName = stationName;
 	}
 	public String getStationLatitude() {
 		return stationLatitude;
@@ -42,7 +51,7 @@ public class FavoriteBikeStation {
 	}
 	@Override
 	public String toString() {
-		return "FavoriteBikeStation [email=" + email + ", stationId=" + stationId + ", stationLatitude="
-				+ stationLatitude + ", stationLongitude=" + stationLongitude + "]";
+		return "FavoriteBikeStation [email=" + email + ", stationId=" + stationId + ", stationName=" + stationName
+				+ ", stationLatitude=" + stationLatitude + ", stationLongitude=" + stationLongitude + "]";
 	}
 }

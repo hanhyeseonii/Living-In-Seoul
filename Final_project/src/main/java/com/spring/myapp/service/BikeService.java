@@ -14,5 +14,7 @@ public interface BikeService {
 	public void updateStationInfo() throws IOException, ParseException;
 	public List<BikeStation> autocomplete(String value);
 	public List<FavoriteBikeStation> FavoriteList(String email);
-	int insertFavorite(FavoriteBikeStation favoriteBikeStation);
+	public int insertFavorite(FavoriteBikeStation favoriteBikeStation);
+	public RealTimeStationInfo selectROne(String stationId);
+	public FavoriteBikeStation selectFavorite(String stationId);
 }
