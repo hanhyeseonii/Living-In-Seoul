@@ -26,7 +26,7 @@
 			&nbsp;│ [코로나] 확진자 수&nbsp;<div class="covid-cnt"></div>
 			&nbsp;사망자 수&nbsp;<div class="death-cnt"></div>
 		</div>
-		<div class="banner"><h5 style="font-weight: bold;">돌발 정보!&nbsp;</h5><div style="text-decoration: underline;" class="accident-text"></div></div>
+		<div class="banner"><h5 style="font-weight: bold;">돌발 정보!!&nbsp;</h5><div style="text-decoration: underline;" class="accident-text"></div></div>
 		<hr>
 		<div class="menu">
 			<div class="menuCard">
