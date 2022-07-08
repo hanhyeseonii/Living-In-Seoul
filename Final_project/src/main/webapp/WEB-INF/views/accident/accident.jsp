@@ -9,7 +9,7 @@
 </head>
 <body>
 	<%@include file="../header.jsp"%>
-	<h2 style="text-align: center;">교통 돌발 리스트</h2>
+	<h2 style="text-align: center;">돌발 리스트</h2>
 	<br>
 	<table border="1" style="margin-left:auto; margin-right:auto; text-align: center;">
 		<tr>
