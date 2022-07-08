@@ -8,7 +8,13 @@ function duplCheck(e, path){
 		document.getElementById('email').focus();
 		return;
 	}
-	
+	/*이메일 형식 체크*/
+	var pattern = new RegExp(/^[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*@[0-9a-zA-Z]([-_.]?[0-9a-zA-Z])*.[a-zA-Z]{2,3}$/i);
+	if(!pattern.test(email)){
+	  	alert("올바른 이메일 주소를 입력하세요.");
+		document.getElementById('email').focus();
+	  	return;
+	}
 	/*ajax 비동기 방식*/
 	fetch(`${path}/member/duplCheck/${email}`)
 	.then(res=>res.json())
@@ -44,7 +50,7 @@ function loginCheck(e){
 	const address = document.getElementById('address').value;
 	
 	if(!email){
-		alert('이메일을 등록해주세요.');
+		alert('이메일을 입력해주세요.');
 		document.getElementById('email').focus();
 		return;
 	}
@@ -58,5 +64,6 @@ function loginCheck(e){
 		document.getElementById('address').focus();
 		return;
 	}
+	
 	frmSign_up.submit();
 }

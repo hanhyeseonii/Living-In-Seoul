@@ -154,9 +154,10 @@ public class MemberController {
 		model.addAttribute("msg", errorCode.getMsg());
 		
 		if(code == 0) {//성공
+			model.addAttribute("email", member.getEmail());
 			return "member/passwd_modify";
 		}else
-		return "member/find_passwd";
+			return "member/find_passwd";
 		
 	}
 	
@@ -225,16 +226,17 @@ public class MemberController {
 	public void passwd_modify(){
 	}
 	
-	//비밀번호 변경에서 SAVE버튼을 눌렀을 때(MY INFORMATION으로 이동)
+	//비밀번호 변경에서 SAVE버튼을 눌렀을 때(login으로 이동)
 	@PostMapping("passwd_modify")
-	public String passwd_modify(@ModelAttribute Member member,
-			Model model,RedirectAttributes rattr, HttpSession session) {
+	public String passwd_modify(@ModelAttribute Member member, Model model,RedirectAttributes rattr, HttpSession session) {
 		logger.info(member.toString());
-		member.setEmail((String)session.getAttribute("email"));
+		if(member.getEmail()==null) {
+			member.setEmail((String)session.getAttribute("email"));
+		}
 		ErrorCode errorCode = memberService.passwd_update(member);
 		rattr.addFlashAttribute("msg",errorCode.getMsg());
 		
-		return "redirect:/member/info";
+		return "redirect:/member/login";
 	}
 	
 	//회원탈퇴 버튼을 눌렀을 때(MEMBERSHIP WITTHDRAWAL로 이동)

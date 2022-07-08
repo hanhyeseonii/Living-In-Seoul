@@ -12,6 +12,7 @@
 	<%@ include file="../header.jsp"%>
 	<h5>MY PASSWORD MODIFY</h5>
 	<form id="frmPasswdMd" action="${path}/member/passwd_modify" method="post">
+		<input type="hidden" value="${email}" name="email">
 		<table>
 			<tr>
 				<th>password</th>
